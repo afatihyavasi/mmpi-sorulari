@@ -1,0 +1,2995 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MMPI Soruları | Online Cevaplama, Psikologla Paylaşma ve PDF</title>
+<meta name="description" content="MMPI sorularını tek tek cevapla, cevaplarını kısa bir kodla psikoloğunla paylaş ve orijinal cevap anahtarı düzeninde PDF olarak indir. Cevaplar yalnızca tarayıcında saklanır.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="MMPI Soruları | Online Cevaplama ve Psikologla Paylaşma">
+<meta property="og:description" content="Soruları adım adım cevapla, sonucu kısa kodla psikoloğunla paylaş, PDF olarak indir.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MMPI Soruları">
+<meta name="twitter:description" content="Soruları adım adım cevapla, sonucu kısa kodla psikoloğunla paylaş, PDF olarak indir.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"MMPI Soruları","inLanguage":"tr","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","description":"MMPI sorularını adım adım cevaplama, cevapları kısa bir kodla psikologla paylaşma ve PDF cevap anahtarı oluşturma aracı."}
+</script>
+<script>try { var t = localStorage.getItem('mmpi-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Tasarım dili: shadcn/ui (zinc). Nötr yüzeyler, ince kenarlıklar; renk yalnızca Doğru (mavi) ve Yanlış (turuncu) için. */
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --ring: #a1a1aa;
+  --destructive: #dc2626;
+  --destructive-soft: #fef2f2;
+  --d: #16a34a; --d-soft: #f0fdf4; --d-border: #bbf7d0; --on-d: #ffffff;
+  --y: #dc2626; --y-soft: #fef2f2; --y-border: #fecaca; --on-y: #ffffff;
+  --warn-bg: #fffbeb; --warn-border: #fde68a; --warn-fg: #92400e;
+  --shadow-sm: 0 1px 2px rgba(9, 9, 11, .05);
+  --shadow-lg: 0 10px 38px -10px rgba(9, 9, 11, .25), 0 10px 20px -15px rgba(9, 9, 11, .15);
+  --radius: 10px;
+  --font: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #09090b; --foreground: #fafafa; --card: #0c0c0e; --muted: #1c1c20; --muted-foreground: #a1a1aa;
+    --border: #27272a; --input: #27272a; --primary: #fafafa; --primary-foreground: #18181b; --ring: #52525b;
+    --destructive: #f87171; --destructive-soft: rgba(248, 113, 113, .1);
+    --d: #22c55e; --d-soft: rgba(34, 197, 94, .1); --d-border: rgba(34, 197, 94, .35); --on-d: #052e16;
+    --y: #ef4444; --y-soft: rgba(239, 68, 68, .1); --y-border: rgba(239, 68, 68, .35); --on-y: #ffffff;
+    --warn-bg: rgba(251, 191, 36, .08); --warn-border: rgba(251, 191, 36, .3); --warn-fg: #fcd34d;
+    --shadow-sm: none; --shadow-lg: 0 10px 38px -10px rgba(0, 0, 0, .7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --background: #09090b; --foreground: #fafafa; --card: #0c0c0e; --muted: #1c1c20; --muted-foreground: #a1a1aa;
+  --border: #27272a; --input: #27272a; --primary: #fafafa; --primary-foreground: #18181b; --ring: #52525b;
+  --destructive: #f87171; --destructive-soft: rgba(248, 113, 113, .1);
+  --d: #22c55e; --d-soft: rgba(34, 197, 94, .1); --d-border: rgba(34, 197, 94, .35); --on-d: #052e16;
+  --y: #ef4444; --y-soft: rgba(239, 68, 68, .1); --y-border: rgba(239, 68, 68, .35); --on-y: #ffffff;
+  --warn-bg: rgba(251, 191, 36, .08); --warn-border: rgba(251, 191, 36, .3); --warn-fg: #fcd34d;
+  --shadow-sm: none; --shadow-lg: 0 10px 38px -10px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--background); color: var(--foreground);
+  font-family: var(--font); font-size: 15px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01";
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+h1, h2, h3, p { margin: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.muted { color: var(--muted-foreground); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+svg.i { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Başlık */
+.header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--background) 85%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--border); padding-top: env(safe-area-inset-top, 0px); }
+.header-in { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.01em; background: none; border: 0; padding: 0; cursor: pointer; }
+.logo { width: 26px; height: 26px; border-radius: 7px; background: var(--primary); color: var(--primary-foreground); display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 6px; }
+.logo i { border-radius: 2px; background: currentColor; }
+.logo i:nth-child(2) { opacity: .45; }
+.logo i:nth-child(3) { opacity: .45; }
+.hdr-actions { display: flex; align-items: center; gap: 2px; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap.narrow { max-width: 640px; }
+main.wrap { padding-top: 28px; padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
+
+/* Düğmeler */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+  height: 38px; padding: 0 14px; border-radius: 8px; border: 1px solid transparent;
+  font-size: 14px; font-weight: 500; cursor: pointer; touch-action: manipulation;
+  transition: background-color .15s, border-color .15s, color .15s, opacity .15s;
+}
+.btn:disabled { opacity: .5; pointer-events: none; }
+.btn-primary { background: var(--primary); color: var(--primary-foreground); box-shadow: var(--shadow-sm); }
+.btn-primary:hover { background: color-mix(in srgb, var(--primary) 88%, var(--background)); }
+.btn-outline { background: var(--background); border-color: var(--input); box-shadow: var(--shadow-sm); }
+.btn-outline:hover { background: var(--muted); }
+.btn-ghost { background: transparent; }
+.btn-ghost:hover { background: var(--muted); }
+.btn-destructive-ghost { background: transparent; color: var(--destructive); }
+.btn-destructive-ghost:hover { background: var(--destructive-soft); }
+.btn-destructive { background: var(--destructive); color: #fff; }
+.btn-lg { height: 44px; padding: 0 20px; font-size: 15px; }
+.btn-sm { height: 32px; padding: 0 10px; font-size: 13px; }
+.btn-icon { width: 36px; padding: 0; }
+.btn .lbl-sm { display: none; }
+
+.kbd { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 4px; border: 1px solid var(--border); border-bottom-width: 2px; background: var(--muted); color: var(--muted-foreground); font-family: var(--mono); font-size: 11px; font-weight: 500; line-height: 1; }
+
+/* Kart, rozet, uyarı */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-sm); }
+.card-pad { padding: 20px; }
+.card-h { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.card-d { font-size: 14px; color: var(--muted-foreground); margin-top: 4px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 8px; border-radius: 6px; border: 1px solid var(--border); font-size: 12px; font-weight: 500; white-space: nowrap; }
+.badge-d { background: var(--d-soft); color: var(--d); border-color: var(--d-border); }
+.badge-y { background: var(--y-soft); color: var(--y); border-color: var(--y-border); }
+.alert { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); font-size: 14px; }
+.alert svg.i { margin-top: 2px; }
+.alert-warn { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn-fg); }
+.alert .grow { flex: 1; min-width: 0; }
+.alert b { font-weight: 600; }
+
+/* Form */
+.label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.input, .select, .textarea {
+  width: 100%; min-width: 0; height: 38px; padding: 0 12px; border-radius: 8px;
+  border: 1px solid var(--input); background: transparent; font-size: 14px; box-shadow: var(--shadow-sm);
+}
+.select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%), linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%); background-position: calc(100% - 16px) 16px, calc(100% - 11px) 16px; background-size: 5px 5px; background-repeat: no-repeat; }
+.select option { background: var(--card); }
+.textarea { height: auto; padding: 10px 12px; font-family: var(--mono); font-size: 13px; resize: vertical; line-height: 1.5; word-break: break-all; }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 30%, transparent); }
+.field-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.err { font-size: 13px; color: var(--destructive); margin-top: 8px; min-height: 0; }
+.err:empty { display: none; }
+
+.switch { position: relative; width: 36px; height: 20px; flex: none; border-radius: 999px; border: 0; padding: 0; background: var(--input); cursor: pointer; transition: background-color .15s; }
+.switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--background); box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform .15s; }
+.switch[aria-checked="true"] { background: var(--primary); }
+.switch[aria-checked="true"]::after { transform: translateX(16px); }
+.switch-row { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; user-select: none; }
+
+/* İlerleme */
+.progress { height: 6px; border-radius: 999px; background: var(--muted); overflow: hidden; }
+.progress > i { display: block; height: 100%; width: 0; background: var(--primary); border-radius: inherit; transition: width .25s ease; }
+
+/* Akordeon (details) */
+.accordion { border: 1px solid var(--border); border-radius: 12px; background: var(--card); box-shadow: var(--shadow-sm); }
+.acc-item + .acc-item { border-top: 1px solid var(--border); }
+.acc-item > summary { list-style: none; display: flex; align-items: center; gap: 12px; padding: 16px 18px; cursor: pointer; font-weight: 500; font-size: 14px; }
+.acc-item > summary::-webkit-details-marker { display: none; }
+.acc-item > summary .sub { font-weight: 400; color: var(--muted-foreground); font-size: 13px; }
+.acc-item > summary .chev { margin-left: auto; color: var(--muted-foreground); transition: transform .2s; }
+.acc-item[open] > summary .chev { transform: rotate(180deg); }
+.acc-item > summary:hover { background: color-mix(in srgb, var(--muted) 50%, transparent); }
+.acc-item:first-child > summary { border-radius: 12px 12px 0 0; }
+.acc-body { padding: 0 18px 18px; }
+.acc-ico { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border); display: grid; place-items: center; flex: none; color: var(--muted-foreground); }
+
+/* Başlangıç */
+.hero h1 { font-size: clamp(28px, 6vw, 40px); font-weight: 700; letter-spacing: -0.035em; line-height: 1.1; }
+.hero p { font-size: 16px; color: var(--muted-foreground); margin-top: 12px; max-width: 34em; text-wrap: pretty; }
+.home-grid { display: grid; gap: 16px; margin-top: 28px; }
+.start-card { display: grid; gap: 18px; }
+.start-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.start-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.prog-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.prog-big { font-size: 32px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.prog-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13px; color: var(--muted-foreground); }
+.prog-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 2px; background: var(--muted); border: 1px solid var(--border); }
+.dot-d { background: var(--d); border-color: var(--d); } .dot-y { background: var(--y); border-color: var(--y); }
+.site-foot { border-top: 1px solid var(--border); margin-top: 8px; padding: 22px 0 calc(22px + env(safe-area-inset-bottom, 0px)); font-size: 13px; color: var(--muted-foreground); }
+.foot-in { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px 32px; }
+.foot-left { display: grid; gap: 4px; max-width: 34em; }
+.foot-made { color: var(--foreground); font-weight: 500; }
+.foot-made [role="img"] { margin: 0 3px; }
+.foot-mail { display: inline-flex; align-items: center; gap: 8px; flex: none; color: var(--foreground); text-decoration: none; padding: 6px 10px; margin: -6px -10px; border-radius: 8px; }
+.foot-mail:hover { background: var(--muted); }
+@media (max-width: 640px) { .foot-in { flex-direction: column; } }
+.settings { display: grid; gap: 0; }
+.set-row { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--border); }
+.set-row:first-child { border-top: 0; padding-top: 0; }
+.set-row .grow { flex: 1; min-width: 0; display: grid; gap: 2px; font-size: 13px; color: var(--muted-foreground); }
+.set-row b { font-size: 14px; font-weight: 500; color: var(--foreground); }
+.danger-btn { color: var(--destructive); }
+.danger-btn:hover { background: var(--destructive-soft); border-color: color-mix(in srgb, var(--destructive) 40%, var(--border)); }
+
+/* Soru ekranı */
+.step-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; font-size: 13px; color: var(--muted-foreground); }
+.step-top b { color: var(--foreground); font-weight: 600; }
+.qcard { margin-top: 20px; min-height: 220px; padding: clamp(22px, 5vw, 36px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; overflow: hidden; }
+.qnum { font-family: var(--mono); font-size: 13px; color: var(--muted-foreground); display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.qtext { font-size: clamp(21px, 4.8vw, 28px); font-weight: 600; letter-spacing: -0.022em; line-height: 1.3; text-wrap: pretty; max-width: 26em; }
+.qbody.in-next { animation: qin-next .22s ease both; }
+.qbody.in-prev { animation: qin-prev .22s ease both; }
+@keyframes qin-next { from { opacity: 0; transform: translateX(14px); } }
+@keyframes qin-prev { from { opacity: 0; transform: translateX(-14px); } }
+
+.dock { margin-top: 16px; }
+.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.abtn {
+  position: relative; height: 84px; border-radius: 12px; cursor: pointer; touch-action: manipulation;
+  border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-size: 18px; font-weight: 600; letter-spacing: -0.01em;
+  transition: background-color .12s, border-color .12s, color .12s, transform .08s;
+}
+.abtn:active { transform: scale(.985); }
+.abtn .kbd { position: absolute; top: 10px; right: 10px; }
+/* Düğmeler her zaman dolu renkte; seçilen işaretli ve halkalı, seçilmeyen soluklaşır. */
+.abtn .mark { width: 22px; height: 22px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; opacity: .7; }
+.abtn .mark svg { width: 13px; height: 13px; stroke-width: 3; opacity: 0; }
+.abtn.d { background: var(--d); border-color: var(--d); color: var(--on-d); }
+.abtn.y { background: var(--y); border-color: var(--y); color: var(--on-y); }
+.abtn:hover { filter: brightness(1.07); }
+.abtn .kbd { background: transparent; color: inherit; border-color: color-mix(in srgb, currentColor 45%, transparent); }
+.abtn.d[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--background), 0 0 0 5px var(--d); }
+.abtn.y[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--background), 0 0 0 5px var(--y); }
+.abtn[aria-pressed="true"] .mark { opacity: 1; background: currentColor; }
+.abtn[aria-pressed="true"] .mark svg { opacity: 1; }
+.abtn.d[aria-pressed="true"] .mark svg { stroke: var(--d); } .abtn.y[aria-pressed="true"] .mark svg { stroke: var(--y); }
+.answers:has([aria-pressed="true"]) .abtn[aria-pressed="false"] { opacity: .4; }
+.step-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.step-nav .mid { display: flex; justify-content: center; flex: 1; }
+.step-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted-foreground); }
+.hints { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.hints span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* Genel bakış */
+.page-h { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.page-h h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+.page-h p { color: var(--muted-foreground); margin-top: 6px; font-size: 14px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.tabs { display: inline-flex; padding: 3px; border-radius: 9px; background: var(--muted); gap: 2px; }
+.tab { height: 30px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: var(--muted-foreground); font-size: 13px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.tab[aria-selected="true"] { background: var(--background); color: var(--foreground); box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.tab .cnt { font-family: var(--mono); font-size: 11px; opacity: .7; }
+.jump { display: flex; gap: 6px; }
+.jump .input { width: 110px; }
+.map { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 5px; }
+.cell { height: 36px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); font-family: var(--mono); font-size: 12px; color: var(--muted-foreground); cursor: pointer; padding: 0; font-variant-numeric: tabular-nums; transition: border-color .1s; }
+.cell:hover { border-color: var(--ring); color: var(--foreground); }
+.cell[data-v="D"] { background: var(--d-soft); border-color: var(--d-border); color: var(--d); }
+.cell[data-v="Y"] { background: var(--y-soft); border-color: var(--y-border); color: var(--y); }
+.cell.cur { outline: 2px solid var(--foreground); outline-offset: 1px; }
+.map-filter-d .cell:not([data-v="D"]), .map-filter-y .cell:not([data-v="Y"]), .map-filter-b .cell:not([data-v=""]) { opacity: .18; }
+
+/* Sonuç */
+.res-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .res-grid { grid-template-columns: 1.15fr 1fr; align-items: start; } }
+.seg { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--muted); gap: 2px; margin: 16px 0 14px; }
+.seg i { display: block; height: 100%; transition: width .3s; }
+.seg .sd { background: var(--d); } .seg .sy { background: var(--y); } .seg .sb { background: transparent; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.stat { background: var(--card); padding: 12px 14px; }
+.stat .k { font-size: 13px; color: var(--muted-foreground); display: flex; align-items: center; gap: 6px; }
+.stat .v { font-size: 24px; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.res-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.code-box { display: flex; gap: 8px; align-items: stretch; }
+.code-box .textarea { flex: 1; min-height: 76px; word-break: break-all; }
+.share-list { display: grid; gap: 14px; margin-top: 16px; }
+.answers-sec { margin-top: 32px; }
+.answers-sec h2 { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+.search { position: relative; flex: 1; min-width: 180px; max-width: 300px; }
+.search svg.i { position: absolute; left: 11px; top: 11px; color: var(--muted-foreground); }
+.search .input { padding-left: 34px; }
+.alist { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); }
+.arow { display: grid; grid-template-columns: 48px 76px 1fr; gap: 12px; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+.arow:last-child { border-bottom: 0; }
+.arow.click { cursor: pointer; }
+.arow.click:hover { background: color-mix(in srgb, var(--muted) 60%, transparent); }
+.arow .n { font-family: var(--mono); color: var(--muted-foreground); font-size: 12px; font-variant-numeric: tabular-nums; }
+.arow .t { min-width: 0; overflow-wrap: anywhere; }
+.arow .blank { color: var(--muted-foreground); font-size: 12px; }
+.empty { padding: 40px 16px; text-align: center; color: var(--muted-foreground); font-size: 14px; }
+
+/* Menü */
+.menu-wrap { position: relative; }
+.menu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 160px; padding: 4px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-lg); z-index: 40; animation: pop .12s ease; }
+.menu button { width: 100%; display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 10px; border: 0; border-radius: 6px; background: none; font-size: 14px; cursor: pointer; text-align: left; }
+.menu button:hover, .menu button:focus-visible { background: var(--muted); outline: none; }
+.menu button .chk { margin-left: auto; opacity: 0; }
+.menu button[aria-checked="true"] .chk { opacity: 1; }
+@keyframes pop { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+
+/* Dialog */
+dialog { border: 1px solid var(--border); border-radius: 14px; background: var(--card); color: var(--foreground); padding: 24px; width: min(440px, calc(100vw - 32px)); box-shadow: var(--shadow-lg); }
+dialog[open] { animation: dlg-in .16s ease; }
+dialog::backdrop { background: rgba(0, 0, 0, .6); }
+@keyframes dlg-in { from { opacity: 0; transform: translateY(6px) scale(.98); } }
+.dlg-h { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
+.dlg-d { color: var(--muted-foreground); font-size: 14px; margin-top: 8px; }
+.dlg-f { display: flex; flex-wrap: wrap-reverse; justify-content: flex-end; gap: 8px; margin-top: 22px; }
+#onb { width: min(480px, calc(100vw - 32px)); padding: 0; overflow: hidden; }
+.onb-art { height: 168px; background: var(--muted); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 10px; }
+.onb-body { padding: 22px 24px 0; min-height: 146px; }
+.onb-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 24px 22px; }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 6px; height: 6px; border-radius: 3px; background: var(--border); transition: width .2s, background-color .2s; }
+.dots i.on { width: 18px; background: var(--foreground); }
+.mini-q { width: 260px; padding: 14px 16px; border-radius: 10px; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-sm); font-size: 14px; font-weight: 600; }
+.mini-q .mono { font-size: 11px; color: var(--muted-foreground); font-weight: 400; display: block; margin-bottom: 4px; }
+.mini-ab { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 260px; }
+.mini-ab span { height: 44px; border-radius: 8px; display: grid; place-items: center; font-weight: 600; font-size: 14px; border: 1px solid var(--border); background: var(--card); }
+.mini-ab .on { background: var(--d); border-color: var(--d); color: var(--on-d); }
+.mini-ab .y { color: var(--y); }
+.big-kbd { display: flex; gap: 8px; }
+.big-kbd .kbd { min-width: 44px; height: 44px; font-size: 15px; border-radius: 8px; background: var(--card); color: var(--foreground); }
+
+/* Başka cihazda devam et */
+#dlg-transfer { width: min(620px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow-y: auto; }
+.tr-steps { list-style: none; margin: 20px 0 16px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; counter-reset: tr; }
+.tr-step { counter-increment: tr; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted-foreground); }
+.tr-step b { color: var(--foreground); font-size: 14px; font-weight: 600; margin-top: 6px; }
+.tr-step b::before { content: counter(tr) ". "; color: var(--muted-foreground); font-weight: 500; }
+.tr-art { border: 1px solid var(--border); border-radius: 10px; background: var(--muted); aspect-ratio: 5 / 3; display: grid; place-items: center; padding: 6px; }
+.tr-art svg { width: 100%; height: 100%; }
+.tr-art .f-card { fill: var(--card); } .tr-art .f-muted { fill: var(--muted); } .tr-art .f-muted2 { fill: var(--border); }
+.tr-art .f-fg { fill: var(--foreground); } .tr-art .f-d { fill: var(--d); } .tr-art .f-y { fill: var(--y); }
+.tr-art .s-border { stroke: var(--border); stroke-width: 1.2; } .tr-art .s-d { stroke: var(--d); }
+.tr-art .s-bg { stroke: var(--background); } .tr-art .s-on-d { stroke: var(--on-d); }
+.tr-share { display: flex; gap: 18px; align-items: center; padding: 16px; border: 1px solid var(--border); border-radius: 12px; }
+.tr-qr { display: grid; justify-items: center; gap: 6px; font-size: 12px; color: var(--muted-foreground); flex: none; }
+.qr-tile { width: 132px; height: 132px; padding: 8px; background: #fff; border-radius: 8px; border: 1px solid var(--border); }
+.qr-tile svg { width: 100%; height: 100%; display: block; }
+.tr-actions { display: grid; gap: 8px; flex: 1; min-width: 0; }
+.tr-sum { font-size: 14px; font-weight: 500; }
+.tr-sum span { color: var(--muted-foreground); font-weight: 400; }
+.tr-note { font-size: 12px; color: var(--muted-foreground); }
+@media (max-width: 560px) {
+  .tr-steps { grid-template-columns: 1fr; }
+  .tr-step { display: grid; grid-template-columns: 88px 1fr; column-gap: 12px; align-items: center; }
+  .tr-step .tr-art { grid-row: span 2; }
+  .tr-step b { margin-top: 0; align-self: end; }
+  .tr-step span { align-self: start; }
+  .tr-share { flex-direction: column; align-items: stretch; }
+  .tr-qr { display: none !important; }       /* telefondayken QR okutmak anlamsız */
+}
+
+/* Kişisel bilgi formu */
+#dlg-info { width: min(520px, calc(100vw - 32px)); }
+.info-grid { margin-top: 18px; grid-template-columns: 1fr 1fr; }
+.info-grid .span2 { grid-column: 1 / -1; }
+@media (max-width: 420px) { .info-grid { grid-template-columns: 1fr; } }
+
+/* Tebrikler: uygulamadaki tek orkestre edilmiş an — onay işareti çizilir, renkli parçalar bir kez dağılır. */
+.done { text-align: center; display: grid; justify-items: center; gap: 0; padding-top: 12px; }
+.done h1 { font-size: clamp(26px, 6vw, 34px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-top: 22px; text-wrap: balance; }
+.done-p { color: var(--muted-foreground); margin-top: 10px; max-width: 30em; text-wrap: pretty; }
+.done-burst { position: relative; width: 96px; height: 96px; }
+.done-check { width: 96px; height: 96px; }
+.done-check circle { fill: var(--d); stroke: none; transform-origin: center; animation: done-pop .45s cubic-bezier(.2, 1.4, .4, 1) both; }
+.done-check path { fill: none; stroke: var(--on-d); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 36; stroke-dashoffset: 36; animation: done-draw .35s .3s ease-out forwards; }
+@keyframes done-pop { from { transform: scale(.4); opacity: 0; } }
+@keyframes done-draw { to { stroke-dashoffset: 0; } }
+.done-burst i { position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; border-radius: 2px; opacity: 0; animation: done-fly .9s .25s cubic-bezier(.15, .8, .3, 1) forwards; }
+.done-burst i:nth-child(odd) { background: var(--d); } .done-burst i:nth-child(even) { background: var(--y); }
+.done-burst i:nth-child(3n) { background: var(--foreground); width: 6px; height: 6px; border-radius: 50%; }
+.done-burst i:nth-child(1) { --a: 0deg; } .done-burst i:nth-child(2) { --a: 30deg; } .done-burst i:nth-child(3) { --a: 60deg; }
+.done-burst i:nth-child(4) { --a: 90deg; } .done-burst i:nth-child(5) { --a: 120deg; } .done-burst i:nth-child(6) { --a: 150deg; }
+.done-burst i:nth-child(7) { --a: 180deg; } .done-burst i:nth-child(8) { --a: 210deg; } .done-burst i:nth-child(9) { --a: 240deg; }
+.done-burst i:nth-child(10) { --a: 270deg; } .done-burst i:nth-child(11) { --a: 300deg; } .done-burst i:nth-child(12) { --a: 330deg; }
+@keyframes done-fly {
+  0% { opacity: 1; transform: rotate(var(--a)) translateY(0) rotate(0); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--a)) translateY(-78px) rotate(200deg); }
+}
+.done-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; max-width: 420px; margin-top: 26px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--border); gap: 1px; }
+.done-stats > div { background: var(--card); padding: 14px 8px; display: grid; gap: 2px; }
+.done-stats b { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; }
+.done-stats span { font-size: 13px; color: var(--muted-foreground); display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+#done-blank { margin-top: 16px; width: 100%; max-width: 520px; text-align: left; align-items: center; }
+.done-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 26px; }
+.done-note { font-size: 13px; color: var(--muted-foreground); margin-top: 16px; }
+@media (max-width: 560px) { .done-actions { width: 100%; } .done-actions .btn { width: 100%; } #done-blank { flex-wrap: wrap; } }
+
+/* Sonuç: karekodla paylaş */
+.share-grid { display: flex; gap: 18px; align-items: flex-start; margin-top: 16px; }
+.share-qr { margin: 0; display: grid; justify-items: center; gap: 8px; flex: none; width: 148px; }
+.share-qr .qr-tile { width: 148px; height: 148px; display: grid; place-items: center; }
+.share-qr figcaption { font-size: 12px; color: var(--muted-foreground); text-align: center; line-height: 1.4; }
+.qr-ph { font-size: 12px; color: #71717a; text-align: center; padding: 8px; }
+.share-grid .share-list { margin-top: 0; flex: 1; min-width: 0; gap: 10px; }
+.share-grid .share-list .btn { width: 100%; }
+@media (max-width: 480px) { .share-grid { flex-direction: column; align-items: center; } .share-grid .share-list { width: 100%; } }
+
+/* Kod ile aç */
+.code-cta { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
+.code-cta .grow { flex: 1; min-width: 0; display: grid; gap: 2px; font-size: 13px; color: var(--muted-foreground); }
+.code-cta b { color: var(--foreground); font-size: 14px; font-weight: 500; }
+#dlg-code { width: min(520px, calc(100vw - 32px)); }
+.mode { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+.mode-opt { text-align: left; display: grid; gap: 4px; align-content: start; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 12.5px; color: var(--muted-foreground); line-height: 1.45; }
+.mode-opt b { color: var(--foreground); font-size: 14px; font-weight: 500; line-height: 1.3; }
+.mode-opt svg.i { color: var(--muted-foreground); margin-bottom: 4px; }
+.mode-opt:hover { background: var(--muted); }
+.mode-opt[aria-checked="true"] { border-color: var(--foreground); box-shadow: inset 0 0 0 1px var(--foreground); }
+.mode-opt[aria-checked="true"] svg.i { color: var(--foreground); }
+.code-field { margin-top: 16px; }
+.code-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px; min-height: 32px; }
+.code-ok { font-size: 13px; color: var(--d); margin-top: 8px; }
+@media (max-width: 560px) {
+  .code-cta { flex-wrap: wrap; }
+  .code-cta .btn { width: 100%; }
+  .mode { grid-template-columns: 1fr; }
+}
+
+/* Bildirim (toast) */
+.toasts { position: fixed; z-index: 60; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 8px; width: min(360px, calc(100vw - 32px)); pointer-events: none; }
+.toast { pointer-events: auto; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow-lg); font-size: 14px; animation: toast-in .2s ease; }
+.toast.out { animation: toast-out .18s ease forwards; }
+.toast .i { color: var(--muted-foreground); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(4px); } }
+
+/* Mobil: cevap düğmeleri başparmak hizasında altta sabit */
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  main.wrap { padding-top: 20px; }
+  .btn .lbl { display: none; }
+  .btn .lbl-sm { display: inline; }
+  .hdr-actions .btn-text { width: 36px; padding: 0; }
+  .qcard { min-height: 200px; }
+  /* Cevaplar ekranın en altında, başparmak hizasında; ileri/geri hemen üstünde. */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; margin: 0; display: flex; flex-direction: column; padding: 8px max(16px, env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-right, 0px)); background: color-mix(in srgb, var(--background) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--border); }
+  .dock .step-nav { order: -1; margin: 0 -8px 8px; }
+  #v-step { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  .abtn { height: 76px; }
+  .abtn .kbd { display: none; }
+  .hints { display: none; }
+  .arow { grid-template-columns: 38px 66px 1fr; gap: 8px; padding: 10px 12px; }
+  .toasts { left: 16px; right: 16px; width: auto; bottom: calc(160px + env(safe-area-inset-bottom, 0px)); }
+  .stat .v { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0s !important; transition-duration: 0s !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="wrap header-in">
+    <button class="brand" id="brand" type="button" aria-label="MMPI Soruları ana ekran">
+      <span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>MMPI Soruları</span>
+    </button>
+    <div class="hdr-actions">
+      <button class="btn btn-ghost btn-text" id="hdr-home" type="button" hidden aria-label="Ana ekrana dön">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span class="lbl">Ana ekran</span>
+      </button>
+      <button class="btn btn-ghost btn-text" id="hdr-map" type="button" hidden aria-label="Tüm sorular">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="lbl">Tüm sorular</span>
+      </button>
+      <button class="btn btn-ghost btn-icon" id="hdr-help" type="button" aria-label="Nasıl çalışır" title="Nasıl çalışır">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.5c-.6.3-1 .8-1 1.5v.4"/><path d="M12 17h.01"/></svg>
+      </button>
+      <div class="menu-wrap">
+        <button class="btn btn-ghost btn-icon" id="theme-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Tema">
+          <svg class="i" id="ic-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i" id="ic-dark" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>
+        </button>
+        <div class="menu" id="theme-menu" role="menu" aria-label="Tema" hidden>
+          <button type="button" role="menuitemradio" data-theme="light"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>Açık<svg class="i chk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></button>
+          <button type="button" role="menuitemradio" data-theme="dark"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg>Koyu<svg class="i chk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></button>
+          <button type="button" role="menuitemradio" data-theme="auto"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Sistem<svg class="i chk" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <!-- Başlangıç -->
+  <section id="v-home" aria-labelledby="home-h">
+    <div class="hero">
+      <h1 id="home-h">MMPI Soruları</h1>
+      <p>566 ifadeyi kendi durumuna göre Doğru ya da Yanlış olarak işaretle. Bitirince cevaplarını PDF olarak indir ya da kısa bir kodla psikoloğuna gönder.</p>
+    </div>
+
+    <div class="home-grid">
+      <div class="alert alert-warn" id="no-q" hidden>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+        <div class="grow">Soru metinleri yüklenemedi. Aşağıdaki "Soru dosyası yükle" bölümünden <b>sorular.md</b> dosyasını seç. Dosya yokken sorular numarayla görünür.</div>
+      </div>
+
+      <div class="card card-pad start-card">
+        <div id="home-new">
+          <h2 class="card-h">Teste başla</h2>
+          <p class="card-d">Yaklaşık 60 ila 90 dakika sürer. Ara verebilirsin; cevapların bu cihazda otomatik saklanır.</p>
+          <div class="start-meta" style="margin-top:14px">
+            <span class="badge">566 soru</span>
+            <span class="badge">İnternetsiz çalışır</span>
+            <span class="badge">Hesap gerekmez</span>
+          </div>
+        </div>
+        <div id="home-progress" hidden>
+          <div class="prog-head">
+            <div>
+              <h2 class="card-h">Kaldığın yerden devam et</h2>
+              <p class="card-d" id="hp-sub"></p>
+            </div>
+            <span class="prog-big mono" id="hp-pct">%0</span>
+          </div>
+          <div class="progress" aria-hidden="true"><i id="hp-bar"></i></div>
+          <div class="prog-legend">
+            <span><i class="dot dot-d"></i>Doğru <b class="mono" id="hp-d">0</b></span>
+            <span><i class="dot dot-y"></i>Yanlış <b class="mono" id="hp-y">0</b></span>
+            <span><i class="dot"></i>Boş <b class="mono" id="hp-b">0</b></span>
+          </div>
+        </div>
+        <div class="start-actions">
+          <button class="btn btn-primary btn-lg" id="start" type="button">Teste başla</button>
+          <button class="btn btn-outline btn-lg" id="home-result" type="button" hidden>Sonucu gör</button>
+          <button class="btn btn-ghost btn-lg" id="home-transfer" type="button" hidden>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="16" y="9" width="6" height="11" rx="1.5"/></svg>Başka cihazda devam et
+          </button>
+        </div>
+      </div>
+
+      <div class="card code-cta">
+        <span class="acc-ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>
+        <div class="grow">
+          <b>Elinde bir kod ya da link mi var?</b>
+          <span>Başka cihazda başladığın testi buraya aktar ya da danışanının cevaplarını görüntüle.</span>
+        </div>
+        <button class="btn btn-outline" id="code-open" type="button">Kod ile aç</button>
+      </div>
+
+      <div class="accordion">
+        <details class="acc-item" id="info-box">
+          <summary>
+            <span class="acc-ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            <span>Kişisel bilgiler<br><span class="sub">İsteğe bağlı, PDF'in altına yazılır</span></span>
+            <svg class="i chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="acc-body">
+            <div class="field-grid">
+              <div><label class="label" for="f-isim">Ad soyad</label><input class="input" id="f-isim" type="text" autocomplete="name"></div>
+              <div><label class="label" for="f-yas">Yaş</label><input class="input" id="f-yas" type="number" inputmode="numeric" min="0" max="120"></div>
+              <div><label class="label" for="f-cins">Cinsiyet</label>
+                <select class="select" id="f-cins"><option value="">Seç</option><option>Kadın</option><option>Erkek</option></select></div>
+              <div><label class="label" for="f-dogum">Doğum tarihi</label><input class="input" id="f-dogum" type="date"></div>
+              <div><label class="label" for="f-test">Test tarihi</label><input class="input" id="f-test" type="date"></div>
+            </div>
+            <p class="muted" style="font-size:13px;margin-top:12px">Paylaşım koduna yalnızca sen işaretlersen eklenir.</p>
+          </div>
+        </details>
+        <details class="acc-item" id="import-box" hidden>
+          <summary>
+            <span class="acc-ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M20 15v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4"/></svg></span>
+            <span>Soru dosyası yükle<br><span class="sub">"1. Soru metni" biçiminde .md dosyası</span></span>
+            <svg class="i chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="acc-body">
+            <input id="f-import" type="file" accept=".md,.txt,text/markdown,text/plain">
+            <p class="err" id="import-err" role="alert"></p>
+          </div>
+        </details>
+        <details class="acc-item" id="settings-box">
+          <summary>
+            <span class="acc-ico"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+            <span>Ayarlar<br><span class="sub">Cevaplama tercihi ve verilerin</span></span>
+            <svg class="i chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="acc-body settings">
+            <div class="set-row">
+              <div class="grow"><b>Cevaplayınca sonraki soruya geç</b><span>Kapalıysa her soruda "Sonraki"ye kendin basarsın.</span></div>
+              <button class="switch" id="set-auto" type="button" role="switch" aria-checked="true" aria-label="Cevaplayınca sonraki soruya geç"></button>
+            </div>
+            <div class="set-row danger">
+              <div class="grow"><b>Tüm cevapları sil</b><span>Bu cihazdaki cevapların ve kişisel bilgilerin kalıcı olarak silinir.</span></div>
+              <button class="btn btn-outline btn-sm danger-btn" id="reset" type="button">Cevapları sil</button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Soru -->
+  <section id="v-step" hidden aria-label="Soru">
+    <div class="step-top">
+      <span>Soru <b class="mono" id="q-pos">1</b> <span class="mono">/ 566</span></span>
+      <span><b class="mono" id="q-done">0</b> cevaplandı <span class="mono" id="q-pct">(%0)</span></span>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+    <div class="card qcard">
+      <div class="qbody" id="q-body">
+        <div class="qnum"><span id="q-num">#1</span><span id="q-state"></span></div>
+        <p class="qtext" id="q-text" aria-live="polite" style="margin-top:16px"></p>
+      </div>
+    </div>
+
+    <div class="dock">
+      <div class="answers">
+        <button class="abtn d" id="b-d" type="button" aria-pressed="false">
+          <span class="mark" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>Doğru<span class="kbd" aria-hidden="true">D</span>
+        </button>
+        <button class="abtn y" id="b-y" type="button" aria-pressed="false">
+          <span class="mark" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>Yanlış<span class="kbd" aria-hidden="true">Y</span>
+        </button>
+      </div>
+      <div class="step-nav">
+        <button class="btn btn-ghost" id="b-prev" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Önceki</button>
+        <div class="mid"><button class="btn btn-ghost btn-sm muted" id="b-clear" type="button" hidden>İşareti kaldır</button></div>
+        <button class="btn btn-ghost" id="b-next" type="button"><span id="b-next-lbl">Atla</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="step-foot">
+      <label class="switch-row" for="auto-sw">
+        <button class="switch" id="auto-sw" type="button" role="switch" aria-checked="true"></button>
+        Cevaplayınca sonraki soruya geç
+      </label>
+      <div class="hints" aria-hidden="true">
+        <span><span class="kbd">D</span><span class="kbd">Y</span> cevapla</span>
+        <span><span class="kbd">←</span><span class="kbd">→</span> gezin</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tüm sorular -->
+  <section id="v-map" hidden aria-labelledby="map-h">
+    <div class="page-h">
+      <div>
+        <h1 id="map-h">Tüm sorular</h1>
+        <p id="map-sub"></p>
+      </div>
+      <div class="start-actions">
+        <button class="btn btn-outline" id="map-back" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Soruya dön</button>
+        <button class="btn btn-primary" id="map-first" type="button">İlk boş soruya git</button>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="tabs" role="tablist" aria-label="Vurgula" id="map-tabs">
+        <button class="tab" role="tab" type="button" data-mf="" aria-selected="true">Tümü</button>
+        <button class="tab" role="tab" type="button" data-mf="b" aria-selected="false">Boş <span class="cnt" id="mc-b"></span></button>
+        <button class="tab" role="tab" type="button" data-mf="d" aria-selected="false">Doğru <span class="cnt" id="mc-d"></span></button>
+        <button class="tab" role="tab" type="button" data-mf="y" aria-selected="false">Yanlış <span class="cnt" id="mc-y"></span></button>
+      </div>
+      <form class="jump" id="jump-form">
+        <label class="sr-only" for="jump-input">Soru numarası</label>
+        <input class="input mono" id="jump-input" type="number" inputmode="numeric" min="1" max="566" placeholder="Soru no">
+        <button class="btn btn-outline" type="submit">Git</button>
+      </form>
+    </div>
+    <div class="map" id="map"></div>
+    <div style="margin-top:20px"><button class="btn btn-outline" id="map-result" type="button">Sonucu gör</button></div>
+  </section>
+
+  <!-- Tebrikler (son sorudan sonra) -->
+  <section id="v-done" hidden aria-labelledby="done-h">
+    <div class="done">
+      <div class="done-burst" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <svg class="done-check" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7.5 7.5L37 19"/></svg>
+      </div>
+      <h1 id="done-h"></h1>
+      <p class="done-p" id="done-p"></p>
+      <div class="done-stats">
+        <div><b class="mono" id="dn-d">0</b><span><i class="dot dot-d"></i>Doğru</span></div>
+        <div><b class="mono" id="dn-y">0</b><span><i class="dot dot-y"></i>Yanlış</span></div>
+        <div><b class="mono" id="dn-b">0</b><span><i class="dot"></i>Boş</span></div>
+      </div>
+      <div class="alert alert-warn" id="done-blank" hidden>
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <div class="grow"><b id="done-blank-n"></b> boş kaldı. Değerlendirme için hepsini cevaplaman önerilir.</div>
+        <button class="btn btn-outline btn-sm" id="done-blank-go" type="button">Boşlara git</button>
+      </div>
+      <div class="done-actions">
+        <button class="btn btn-primary btn-lg" id="done-result" type="button">Sonucu gör ve paylaş</button>
+        <button class="btn btn-outline btn-lg" id="done-pdf" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>PDF indir</button>
+      </div>
+      <p class="done-note">Cevapların bu cihazda kayıtlı. Bir sonraki adım: sonucu psikoloğunla paylaş.</p>
+    </div>
+  </section>
+
+  <!-- Sonuç (kendi cevapların ya da paylaşılan salt okunur görünüm) -->
+  <section id="v-result" hidden aria-labelledby="res-h">
+    <div class="page-h">
+      <div>
+        <h1 id="res-h">Sonuç</h1>
+        <p id="res-sub"></p>
+      </div>
+    </div>
+    <div class="alert" id="viewer-note" hidden style="margin-bottom:16px">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <div class="grow">Salt okunur görünüm. Bu cevaplar sana paylaşıldı ve değiştirilemez.</div>
+    </div>
+
+    <div class="res-grid">
+      <div class="card card-pad">
+        <h2 class="card-h">Özet</h2>
+        <p class="card-d" id="res-done"></p>
+        <div class="seg" aria-hidden="true"><i class="sd" id="seg-d"></i><i class="sy" id="seg-y"></i><i class="sb" id="seg-b"></i></div>
+        <div class="stat-row">
+          <div class="stat"><div class="k"><i class="dot dot-d"></i>Doğru</div><div class="v" id="st-d">0</div></div>
+          <div class="stat"><div class="k"><i class="dot dot-y"></i>Yanlış</div><div class="v" id="st-y">0</div></div>
+          <div class="stat"><div class="k"><i class="dot"></i>Boş</div><div class="v" id="st-b">0</div></div>
+        </div>
+        <div class="alert alert-warn" id="blank-alert" style="margin-top:16px" hidden>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+          <div class="grow"><b id="blank-count"></b> boş bıraktın. PDF yine oluşturulur, ama değerlendirme için tüm soruların cevaplanması önerilir.</div>
+        </div>
+        <div class="res-actions">
+          <button class="btn btn-primary" id="pdf-btn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>PDF indir</button>
+          <button class="btn btn-outline" id="blank-go" type="button" hidden>Boş sorulara git</button>
+          <button class="btn btn-outline" id="res-edit" type="button">Cevapları düzenle</button>
+          <button class="btn btn-outline" id="viewer-exit" type="button" hidden>Kendi testime dön</button>
+        </div>
+      </div>
+
+      <div class="card card-pad" id="share-box">
+        <h2 class="card-h">Psikoloğunla paylaş</h2>
+        <p class="card-d">Psikoloğun karekodu okuttuğunda ya da linki açtığında cevaplarını salt okunur görür, değiştiremez. Karekodu görsel olarak gönderebilirsin.</p>
+        <div class="share-grid">
+          <figure class="share-qr">
+            <div class="qr-tile" id="share-qr-img"><span class="qr-ph">Karekod hazırlanıyor…</span></div>
+            <figcaption>Psikoloğun telefonunun kamerasıyla okutur</figcaption>
+          </figure>
+          <div class="share-list">
+            <label class="switch-row" for="share-info">
+              <button class="switch" id="share-info" type="button" role="switch" aria-checked="false"></button>
+              Kişisel bilgileri de ekle
+            </label>
+            <button class="btn btn-primary" id="qr-share" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><span id="qr-share-lbl">Karekodu paylaş</span></button>
+            <button class="btn btn-outline" id="copy-link" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Linki kopyala</button>
+            <button class="btn btn-outline" id="copy-code" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Kodu kopyala</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="answers-sec">
+      <h2>Cevaplar</h2>
+      <div class="toolbar">
+        <div class="tabs" role="tablist" aria-label="Filtre" id="res-tabs">
+          <button class="tab" role="tab" type="button" data-f="" aria-selected="true">Tümü</button>
+          <button class="tab" role="tab" type="button" data-f="D" aria-selected="false">Doğru</button>
+          <button class="tab" role="tab" type="button" data-f="Y" aria-selected="false">Yanlış</button>
+          <button class="tab" role="tab" type="button" data-f="B" aria-selected="false">Boş</button>
+        </div>
+        <div class="search">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label class="sr-only" for="a-search">Sorularda ara</label>
+          <input class="input" id="a-search" type="search" placeholder="Soru metni ya da numara ara" autocomplete="off">
+        </div>
+      </div>
+      <div class="alist" id="alist"></div>
+      <div class="empty" id="a-empty" hidden>Bu filtreye uyan soru yok.</div>
+    </div>
+  </section>
+
+  <noscript><p>Bu araç JavaScript gerektirir. MMPI sorularını cevaplamak, kısa kodla paylaşmak ve PDF almak için tarayıcında JavaScript'i aç.</p></noscript>
+</main>
+
+<footer class="site-foot" id="site-foot">
+  <div class="wrap foot-in">
+    <div class="foot-left">
+      <p class="foot-made">Kâr amacı gütmeden, <span aria-label="sevgiyle" role="img">❤️</span> ile geliştirildi.</p>
+      <p>Bu araç tanı koymaz, değerlendirmeyi bir uzman yapar. Cevapların sunucuya gönderilmez, yalnızca bu cihazda saklanır.</p>
+    </div>
+    <a class="foot-mail" href="mailto:hello@afatihyavasi.com">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@afatihyavasi.com
+    </a>
+  </div>
+</footer>
+
+<!-- Ana ekrana dönüş onayı -->
+<dialog id="dlg-home" aria-labelledby="dlg-home-h" aria-describedby="dlg-home-p">
+  <h2 class="dlg-h" id="dlg-home-h">Ana ekrana dönülsün mü?</h2>
+  <p class="dlg-d" id="dlg-home-p"></p>
+  <div class="dlg-f">
+    <button class="btn btn-outline" id="dlg-home-no" type="button">Sorulara devam et</button>
+    <button class="btn btn-primary" id="dlg-home-yes" type="button">Ana ekrana dön</button>
+  </div>
+</dialog>
+
+<!-- Başka cihazda devam et -->
+<dialog id="dlg-transfer" aria-labelledby="tr-h" aria-describedby="tr-d">
+  <div class="tr-head">
+    <h2 class="dlg-h" id="tr-h">Başka cihazda devam et</h2>
+    <p class="dlg-d" id="tr-d">Cevapların yalnızca bu cihazda saklanıyor. Aşağıdaki linkle onları telefonuna ya da bilgisayarına taşıyıp kaldığın sorudan devam edebilirsin.</p>
+  </div>
+  <ol class="tr-steps">
+    <li class="tr-step">
+      <div class="tr-art" aria-hidden="true">
+        <svg viewBox="0 0 120 72">
+          <rect class="f-card s-border" x="8" y="10" width="104" height="52" rx="6"/>
+          <rect class="f-muted" x="16" y="20" width="68" height="12" rx="3"/>
+          <rect class="f-fg" x="88" y="20" width="16" height="12" rx="3"/>
+          <rect class="f-muted2" x="20" y="25" width="44" height="2.5" rx="1"/>
+          <rect class="s-bg" x="95" y="22.5" width="5" height="5.5" rx="1" fill="none" stroke-width="1.1"/>
+          <rect class="f-fg s-bg" x="92.5" y="24.5" width="5" height="5.5" rx="1" stroke-width="1.1"/>
+          <rect class="f-muted" x="16" y="40" width="88" height="4" rx="2"/>
+          <rect class="f-fg" x="16" y="40" width="34" height="4" rx="2"/>
+          <rect class="f-muted2" x="16" y="50" width="40" height="3" rx="1.5"/>
+        </svg>
+      </div>
+      <b>Linki kopyala</b>
+      <span>Link, şimdiye kadarki tüm cevaplarını içerir.</span>
+    </li>
+    <li class="tr-step">
+      <div class="tr-art" aria-hidden="true">
+        <svg viewBox="0 0 120 72">
+          <rect class="f-card s-border" x="6" y="16" width="44" height="30" rx="3"/>
+          <rect class="f-muted" x="10" y="20" width="36" height="22" rx="1.5"/>
+          <path class="s-border" d="M2 50h52" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <rect class="f-card s-border" x="88" y="12" width="24" height="44" rx="4"/>
+          <rect class="f-muted" x="91" y="17" width="18" height="32" rx="1.5"/>
+          <path class="s-d" d="M58 32h22m-5-5 5 5-5 5" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle class="f-d" cx="69" cy="20" r="6"/>
+          <path class="s-on-d" d="M66 20h6m-2.5-2.5L72 20l-2.5 2.5" fill="none" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <b>Kendine gönder</b>
+      <span>WhatsApp, e-posta ya da notlar ile diğer cihaza ulaştır. İstersen QR kodu okut.</span>
+    </li>
+    <li class="tr-step">
+      <div class="tr-art" aria-hidden="true">
+        <svg viewBox="0 0 120 72">
+          <rect class="f-card s-border" x="34" y="4" width="52" height="64" rx="7"/>
+          <rect class="f-muted2" x="41" y="13" width="18" height="3" rx="1.5"/>
+          <rect class="f-muted" x="41" y="21" width="38" height="3" rx="1.5"/>
+          <rect class="f-fg" x="41" y="21" width="14" height="3" rx="1.5"/>
+          <rect class="f-muted2" x="41" y="29" width="32" height="3" rx="1.5"/>
+          <rect class="f-d" x="41" y="48" width="18" height="12" rx="2.5"/>
+          <rect class="f-y" x="61" y="48" width="18" height="12" rx="2.5"/>
+        </svg>
+      </div>
+      <b>Linki aç ve devam et</b>
+      <span>Cevapların o cihaza kaydedilir, kaldığın sorudan devam edersin.</span>
+    </li>
+  </ol>
+
+
+  <div class="tr-share">
+    <div class="tr-qr" id="tr-qr" hidden>
+      <div class="qr-tile" id="tr-qr-img"></div>
+      <span>Telefonun kamerasıyla okut</span>
+    </div>
+    <div class="tr-actions">
+      <div class="tr-sum" id="tr-sum"></div>
+      <button class="btn btn-primary" id="tr-copy-link" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>Linki kopyala</button>
+      <button class="btn btn-outline" id="tr-copy-code" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Kodu kopyala</button>
+      <p class="tr-note">Linki yalnızca kendinle paylaş. Linki açan herkes cevaplarını ve kişisel bilgilerini görebilir.</p>
+    </div>
+  </div>
+  <div class="dlg-f" style="margin-top:18px">
+    <button class="btn btn-outline" id="tr-close" type="button">Kapat</button>
+  </div>
+</dialog>
+
+<!-- Teste başlarken kişisel bilgiler (isteğe bağlı) -->
+<dialog id="dlg-info" aria-labelledby="info-h" aria-describedby="info-d">
+  <form id="info-form" novalidate>
+    <h2 class="dlg-h" id="info-h">Seni biraz tanıyalım</h2>
+    <p class="dlg-d" id="info-d">Bu bilgiler yalnızca PDF'in altına yazılır ve bu cihazda saklanır. Hiçbiri zorunlu değil; boş bırakıp geçebilirsin.</p>
+    <div class="field-grid info-grid">
+      <div class="span2"><label class="label" for="d-isim">Ad soyad</label><input class="input" id="d-isim" type="text" autocomplete="name" placeholder="Örn. Ayşe Yılmaz"></div>
+      <div><label class="label" for="d-yas">Yaş</label><input class="input" id="d-yas" type="number" inputmode="numeric" min="0" max="120"></div>
+      <div><label class="label" for="d-cins">Cinsiyet</label>
+        <select class="select" id="d-cins"><option value="">Seç</option><option>Kadın</option><option>Erkek</option></select></div>
+      <div><label class="label" for="d-dogum">Doğum tarihi</label><input class="input" id="d-dogum" type="date"></div>
+      <div><label class="label" for="d-test">Test tarihi</label><input class="input" id="d-test" type="date"></div>
+    </div>
+    <div class="dlg-f">
+      <button class="btn btn-ghost" id="info-skip" type="button">Şimdilik geç</button>
+      <button class="btn btn-primary" type="submit">Kaydet ve başla</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Son sorudan sonra ad soyad eksikse -->
+<dialog id="dlg-name" aria-labelledby="name-h" aria-describedby="name-d">
+  <form id="name-form" novalidate>
+    <h2 class="dlg-h" id="name-h">Son bir şey</h2>
+    <p class="dlg-d" id="name-d">PDF'te ve psikoloğunun gördüğü sonuçta görünmesi için adını ve soyadını yazabilirsin. İstemezsen boş bırak.</p>
+    <div style="margin-top:16px">
+      <label class="label" for="n-isim">Ad soyad</label>
+      <input class="input" id="n-isim" type="text" autocomplete="name" placeholder="Örn. Ayşe Yılmaz">
+    </div>
+    <div class="dlg-f">
+      <button class="btn btn-ghost" id="name-skip" type="button">Geç</button>
+      <button class="btn btn-primary" type="submit">Kaydet</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Kod ile aç: aktar ya da salt okunur görüntüle -->
+<dialog id="dlg-code" aria-labelledby="code-h" aria-describedby="code-d">
+  <h2 class="dlg-h" id="code-h">Kod ile aç</h2>
+  <p class="dlg-d" id="code-d">Diğer cihazda "Linki kopyala" ya da "Kodu kopyala" ile aldığın metni buraya yapıştır. Linkin tamamı da olur, yalnızca M1. ile başlayan kod da.</p>
+
+  <div class="mode" role="radiogroup" aria-label="Ne yapmak istiyorsun?">
+    <button class="mode-opt" type="button" role="radio" aria-checked="true" data-mode="import">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="16" y="9" width="6" height="11" rx="1.5"/></svg>
+      <b>Kendi testime devam edeceğim</b>
+      <span>Cevaplar bu cihaza kaydedilir, kaldığın sorudan devam edersin.</span>
+    </button>
+    <button class="mode-opt" type="button" role="radio" aria-checked="false" data-mode="view">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <b>Danışanımın cevaplarına bakacağım</b>
+      <span>Salt okunur açılır, hiçbir şey kaydedilmez ya da değiştirilmez.</span>
+    </button>
+  </div>
+
+  <div class="code-field">
+    <div class="code-label-row">
+      <label class="label" for="f-open" style="margin:0">Kod ya da link</label>
+      <button class="btn btn-ghost btn-sm" id="code-paste" type="button" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Panodan yapıştır</button>
+    </div>
+    <textarea class="textarea" id="f-open" rows="4" spellcheck="false" autocomplete="off" placeholder="https://mmpi.afatihyavasi.com/#devam=M1.…"></textarea>
+    <p class="err" id="open-err" role="alert"></p>
+    <p class="code-ok" id="code-ok" hidden></p>
+  </div>
+
+  <div class="dlg-f">
+    <button class="btn btn-outline" id="code-cancel" type="button">Vazgeç</button>
+    <button class="btn btn-primary" id="code-go" type="button">Bu cihaza aktar</button>
+  </div>
+</dialog>
+
+<!-- Aktarma onayı (bu cihazda zaten cevap varsa) -->
+<dialog id="dlg-import" aria-labelledby="dlg-import-h" aria-describedby="dlg-import-p">
+  <h2 class="dlg-h" id="dlg-import-h">Cevaplar bu cihaza aktarılsın mı?</h2>
+  <p class="dlg-d" id="dlg-import-p"></p>
+  <div class="dlg-f">
+    <button class="btn btn-outline" id="dlg-import-no" type="button">Vazgeç</button>
+    <button class="btn btn-primary" id="dlg-import-yes" type="button">Aktar ve devam et</button>
+  </div>
+</dialog>
+
+<!-- Sıfırlama onayı -->
+<dialog id="dlg-reset" aria-labelledby="dlg-reset-h" aria-describedby="dlg-reset-p">
+  <h2 class="dlg-h" id="dlg-reset-h">Tüm cevaplar silinsin mi?</h2>
+  <p class="dlg-d" id="dlg-reset-p">Bu cihazdaki cevapların ve kişisel bilgilerin kalıcı olarak silinir. Daha önce paylaştığın kodlar çalışmaya devam eder.</p>
+  <div class="dlg-f">
+    <button class="btn btn-outline" id="dlg-reset-no" type="button">Vazgeç</button>
+    <button class="btn btn-destructive" id="dlg-reset-yes" type="button">Cevapları sil</button>
+  </div>
+</dialog>
+
+<!-- Onboarding -->
+<dialog id="onb" aria-labelledby="onb-h">
+  <div class="onb-slide" data-i="0">
+    <div class="onb-art" aria-hidden="true">
+      <div class="mini-q"><span class="mono">#2</span>İştahım iyidir.</div>
+    </div>
+    <div class="onb-body">
+      <h2 class="dlg-h" id="onb-h">Hoş geldin</h2>
+      <p class="dlg-d">566 kısa ifadeyi tek tek göreceksin. Doğru ya da yanlış cevap yoktur; her ifadeyi kendi durumuna göre, çok düşünmeden değerlendir.</p>
+    </div>
+  </div>
+  <div class="onb-slide" data-i="1" hidden>
+    <div class="onb-art" aria-hidden="true">
+      <div class="mini-ab"><span class="on">Doğru</span><span class="y">Yanlış</span></div>
+    </div>
+    <div class="onb-body">
+      <h2 class="dlg-h">Her ifadeye bir seçim</h2>
+      <p class="dlg-d">İfade senin için çoğunlukla geçerliyse Doğru, değilse Yanlış'ı seç. Sonraki soru kendiliğinden gelir. Emin olamadığını atla, sonra dönersin.</p>
+    </div>
+  </div>
+  <div class="onb-slide" data-i="2" hidden>
+    <div class="onb-art" aria-hidden="true">
+      <div class="big-kbd"><span class="kbd">D</span><span class="kbd">Y</span><span class="kbd">←</span><span class="kbd">→</span></div>
+    </div>
+    <div class="onb-body">
+      <h2 class="dlg-h">Rahat ilerle</h2>
+      <p class="dlg-d">Bilgisayarda D, Y ve ok tuşlarıyla cevaplayabilirsin. Üstteki "Tüm sorular" boş kalanları gösterir. Cevapların bu cihazda otomatik saklanır, istediğin zaman ara ver.</p>
+    </div>
+  </div>
+  <div class="onb-slide" data-i="3" hidden>
+    <div class="onb-art" aria-hidden="true">
+      <div class="big-kbd"><span class="kbd">PDF</span><span class="kbd">M1.…</span></div>
+    </div>
+    <div class="onb-body">
+      <h2 class="dlg-h">Bitince paylaş</h2>
+      <p class="dlg-d">Sonuç ekranından cevaplarını PDF olarak indir ya da kısa linki psikoloğuna gönder. Cevapların hiçbir sunucuya gönderilmez.</p>
+    </div>
+  </div>
+  <div class="onb-foot">
+    <div class="dots" id="onb-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="start-actions">
+      <button class="btn btn-ghost" id="onb-skip" type="button">Geç</button>
+      <button class="btn btn-outline" id="onb-prev" type="button">Geri</button>
+      <button class="btn btn-primary" id="onb-next" type="button">İleri</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+<script type="text/plain" id="sorular-md">
+# MMPI Soruları
+
+1. Teknik yazılardan hoşlanırım.
+
+2. İştahım iyidir.
+
+3. Çok defa sabahları dinç ve dinlenmiş olarak uyanırım.
+
+4. Kütüphaneci olarak çalışmayı seveceğimi sanıyorum.
+
+5. Gürültüden kolayca uyanırım.
+
+6. Cinayet haberlerini okumaktan hoşlanırım.
+
+7. Çoğu zaman el ve ayaklarımın sıcaklığı iyidir.
+
+8. Günlük hayatım beni ilgilendirecek şeylerle doludur.
+
+9. Bugün de hemen hemen eskisi kadar iyi çalışabiliyorum.
+
+10. Çoğu zaman boğazım tıkanır gibi olur.
+
+11. İnsan rüyalarını anlamaya çalışmalı ve kendini onlara göre ayarlamalıdır.
+
+12. Polis romanlarından ya da esrarengiz yazılardan hoşlanırım.
+
+13. Büyük bir sinir gerginliği içinde çalışırım.
+
+14. Ayda bir iki defa ishal olurum.
+
+15. Arasıra söylenemeyecek kadar ayıp şeyler düşünürüm.
+
+16. Hayatta kötülükler hep beni bulur.
+
+17. Babam iyi bir adamdır.
+
+18. Pek seyrek kabız olurum.
+
+19. Yeni bir işe girince kimin gözüne girmem gerektiğini öğrenmek isterim.
+
+20. Cinsel yaşamımdan memnunum.
+
+21. Zaman zaman evi bırakıp gitmek istemişimdir.
+
+22. Arasıra kontrol edemediğim gülme ve ağlama nöbetlerine tutulurum.
+
+23. Tekrarlanan mide bulantısı ve kusmalar bana sıkıntı verir.
+
+24. Kimse beni anlamıyor.
+
+25. Şarkıcı olmayı isterim.
+
+26. Başım derde girince susmayı tercih ederim.
+
+27. Bazen kötü ruhların beni etkileri altına aldığını hissederim.
+
+28. Kötülüğe kötülükle karşılık vermek prensibimdir.
+
+29. Çoğu kez midem ekşir.
+
+30. Bazen canım küfretmek ister.
+
+31. Sık sık geceleri kabus geçiririm.
+
+32. Zihnimi bir iş üzerinde toplamada güçlük çekerim.
+
+33. Başımdan çok garip ve tuhaf şeyler geçti.
+
+34. Çoğu zaman öksürüğüm vardır.
+
+35. Başkaları engel olmasaydı daha çok başarılı olurdum.
+
+36. Sağlığım beni pek kaygılandırmaz.
+
+37. Cinsel yaşamım yüzünden başım hiç derde girmedi.
+
+38. Gençliğimde bir devre ufak tefek şeyler çaldım.
+
+39. Bazen içimde bir şeyler kırmak isteği geçer.
+
+40. Başka bir şey yapmaktansa çoğu zaman oturup hayal kurmayı severim.
+
+41. Kendimi toparlayamadığım için günler, haftalar hatta aylarca hiç bir şeye el sürmediğim olur.
+
+42. Ailem seçtiğim (veya seçmek istediğim) mesleği beğenmiyor.
+
+43. Kuşkulu ve rahatsız uyurum.
+
+44. Çoğu zaman başımın her tarafı ağrır.
+
+45. Her zaman doğruyu söylemem.
+
+46. Şimdi her zamankinden daha iyi düşünüp tartabiliyorum.
+
+47. Ortada hiç bir neden yokken haftada bir ya da daha sık birdenbire her yanımı ateş basar.
+
+48. Başkaları ile bir arada iken kulağıma çok garip şeyler gelmesinden rahatsız olurum.
+
+49. Kanunların hemen hepsi kaldırılırsa daha iyi olur.
+
+50. Bazen ruhum vücudumdan ayrılır.
+
+51. Sağlığım bir çok arkadaşımınki kadar iyidir.
+
+52. Uzun zamandan beri görmediğim okul arkadaşlarım ya da tanıdıklarım önce benimle konuşmazlarsa onları görmemezlikten gelmeyi tercih ederim.
+
+53. Hocaların dua okuyup üflemesi hastalığı iyileştirir.
+
+54. Tanıdıklarımın çoğu beni sever.
+
+55. Kalp ve göğüs ağrılarından hemen hemen hiç şikayetim yoktur.
+
+56. Çocukken okuldan kaçtığım için bir iki defa cezalandırıldım.
+
+57. İnsanlarla çabucak kaynaşırım.
+
+58. Kur'an'ın buyurdukları bir bir çıkmaktadır.
+
+59. Çok defa benden az bilenlerden emir alarak çalışmak zorunda kaldım.
+
+60. Her gün gazetelerin baş yazılarını okumam.
+
+61. Gerektiği gibi bir hayat yaşayamadım.
+
+62. Vücudumun bazı yerlerinde çok defa yanma, gıdıklanma, karıncalanma veya uyuşukluk hissederim.
+
+63. Büyük abdest yapmada ya da tutmada hiç bir güçlük çekmem.
+
+64. Bazen başkalarının sabrını tüketecek kadar bir şeye saplanıp kalırım.
+
+65. Babamı severim.
+
+66. Etrafımda başkalarının görmedikleri eşya ve hayvanlar ya da insanlar görürüm.
+
+67. Başkalarının mutlu göründüğü kadar mutlu olmayı isterdim.
+
+68. Ensemde nadiren ağrı hissederim.
+
+69. Kendi cinsimden olanları oldukça çekici bulurum.
+
+70. Körebe oyunundan hoşlanırdım.
+
+71. Birçok kimseler başkalarının ilgi ve yardımlarını sağlamak için talihsizliklerini abartırlar.
+
+72. Hemen hemen her gün mide ağrılarından rahatsız olurum.
+
+73. Ben önemli bir kimseyim.
+
+74. Çoğu zaman kız olmayı isterdim. (Şayet kız iseniz) Kız olduğuma hiç üzülmedim.
+
+75. Arasıra öfkelenirim.
+
+76. Çoğu zaman kendimi hüzünlü hissederim.
+
+77. Aşk romanları okumaktan hoşlanırım.
+
+78. Şiiri severim.
+
+79. Kolay incinmem.
+
+80. Bazen hayvanlara rahat vermem.
+
+81. Orman bekçiliği gibi işlerden hoşlanacağımı sanıyorum.
+
+82. Tartışmalarda çabucak yenilirim.
+
+83. Çok çalışabilen ya da çalışmak isteyen kişinin başarılı olma şansı yüksektir.
+
+84. Bügünlerde artık hiç ilerleme umudum kalmamış gibi hissediyorum.
+
+85. Kullanamayacak bile olsam bazen başkalarının ayakkabı, eldiven vb. gibi özel eşyaları okadar hoşuma gider ki dokunmak ve aşırmak isterim.
+
+86. Kendime hiç güvenim yoktur.
+
+87. Çiçek satıcısı olmayı isterdim.
+
+88. Genel olarak hayatın yaşanmaya değer olduğu kanısındayım.
+
+89. İnsanlara gerçeği kabul ettirmek güçtür.
+
+90. Bugün yapmam gereken işleri ara sıra yarına bıraktığım olur.
+
+91. Benimle alay edilmesine aldırmam.
+
+92. Hemşire olmayı isterdim.
+
+93. Yükselmek için bir çok kimse yalan söylemekten çekinmez.
+
+94. Sonradan pişman olacağım pek çok şeyi yaptığım olur.
+
+95. Namazımı hemen hemen muntazaman kılarım.
+
+96. Ailemle pek az kavga ederim.
+
+97. Bazen zararlı ya da çok kötü işler yapmak için içimde çok güçlü bir istek duyarım.
+
+98. Kıyamet gününe inanıyorum.
+
+99. Gürültülü eğlencelere katılmaktan hoşlanırım.
+
+100. Bildiğim bir konuda bir kimse saçma sapan ya da cahilce konuşursa onu hemen düzeltirim.
+
+101. Bence cinsel yönden kadınlar da erkekler kadar serbest olmalıdır.
+
+102. En büyük mücadelelerimi kendimle yaparım.
+
+103. Vücudumda pek az seyirme ve kasılma olur.
+
+104. Başıma ne gelirse gelsin aldırış etmiyorum.
+
+105. Keyfim yerinde olmadığı zaman tersliğim üzerimdedir.
+
+106. Çoğu zaman büyük bir hata ya da kötülük yaptığım duygusuna kapılırım.
+
+107. Çoğu zaman mutluyumdur.
+
+108. Çoğu zaman bana, kafam şişmiş ya da burnum tıkanmış gibi gelir.
+
+109. Bazı kimseler o kadar amirane davranırlar ki haklı bile olsalar içimden dediklerinin aksini yapmak gelir.
+
+110. Bana kötülük etmek isteyen biri var.
+
+111. Sırf heyecanlanmak için tehlikeli bir işe girişmedim.
+
+112. Doğru bildiğim şeyler için çoğu zaman direnmek zorunda kalırım.
+
+113. Kanunların uygulanması gerektiğine inanırım.
+
+114. Çoğu zaman başım sıkı bir çember içindeymiş gibi hissederim.
+
+115. Ahirete inanırım.
+
+116. Bahse girdiğim yarış ya da oyunlardan daha çok zevk alırım.
+
+117. Bir çok kimseler daha çok yakalanmaktan korktukları için dürüsttürler.
+
+118. Dersten kaçtığım için ara sıra müdüre gönderildiğim oldu.
+
+119. Konuşma tarzım her zamanki gibidir.
+
+120. Evde sofra adabına dışarıdaki kadar dikkat etmem.
+
+121. Aleyhimde bazı tertipler kurulduğuna inanıyorum.
+
+122. Tanıdığım insanların çoğu kadar becerikli ve zeki olduğumu sanıyorum.
+
+123. Beni takip edenler olduğuna inanıyorum.
+
+124. Birçokları kaybetmektense çıkarlarını korumak için pek doğru olmayan yollara başvururlar.
+
+125. Midemden oldukça rahatsızım.
+
+126. Tiyatrodan hoşlanırım.
+
+127. Dertlerimin çoğundan kimin sorumlu olduğunu biliyorum.
+
+128. Kan görünce korkmam ya da fenalaşmam.
+
+129. Bazen ters ve suratsız olurum.
+
+130. Hiç bir zaman kan kusmadım ya da kan tükürmedim.
+
+131. Hastalığa yakalanacağım diye kaygılanmam.
+
+132. Çiçek koleksiyonu yapmayı ve evde çiçek yetiştirmeyi severim.
+
+133. Hiçbir zaman normal olmayan cinsel ilişkilere girişmedim.
+
+134. Bazen kafamdaki düşünceler o kadar hızlıdır ki söylemeyi yetiştiremem.
+
+135. Farkedilmeyeceğimden emin olsam sinemaya biletsiz girerdim.
+
+136. Bana iyilik yapan kimselerin genel olarak gizli bir amacı olabileceğini düşünürüm.
+
+137. Aile hayatımın tanıdığım kimselerin çoğunki kadar iyi olduğuna inanıyorum.
+
+138. Eleştiri beni çok kırar.
+
+139. Bazen sanki kendimi ya da başkasını incitmek zorundaymışım gibi hissederim.
+
+140. Yemek pişirmeyi severim.
+
+141. Davranışlarımı çoğu zaman etrafımdakilere göre ayarlarım.
+
+142. Bazen hiçbir işe yaramadığımı düşünürüm.
+
+143. Çocukken başlarına ne gelirse gelsin aralarındaki birliği koruyan bir gruptaydım.
+
+144. Asker olmak isterim.
+
+145. Bazen biriyle yumruk yumruğa kavgaya girişmek istediğim olur.
+
+146. Seyahat edip gezip tozmadıkça mutlu olamam.
+
+147. Çabuk karar vermediğim için çok fırsat kaçırdım.
+
+148. Önemli bir iş üzerinde çalışırken başkalarının işimi yarıda kesmeleri sabrımı taşırır.
+
+149. Hatıra defteri tutardım.
+
+150. Oyunda kaybetmektense kazanmayı isterim.
+
+151. Biri beni zehirlemeye çalışıyor.
+
+152. Çoğu geceler zihnimi hiçbir şey kurcalamadan uykuya dalarım.
+
+153. Son bir kaç yıl içinde sağlığım çoğu zaman iyi idi.
+
+154. Hiç sinir nöbeti ya da havale geçirmedim.
+
+155. Ne şişmanlıyorum ne de zayıflıyorum.
+
+156. Bir şeyler yapıp sonra ne yaptığımı hatırlayamadığım zamanlar oldu.
+
+157. Çoğu kez sebepsiz yere cezalandırıldım.
+
+158. Çabuk ağlarım.
+
+159. Okuduğumu eskisi kadar iyi anlayamıyorum.
+
+160. Hayatımda hiçbir zaman kendimi şimdiki kadar iyi hissetmedim.
+
+161. Bazen başımda bir sızı hissederim.
+
+162. Birisinin bana kurnazca oyun etmesine çok içerlerim.
+
+163. Çabucak yorulmam.
+
+164. Üzerinde çalıştığım konularda okumayı ve incelemelerde bulunmayı severim.
+
+165. Önemli kimseleri tanımayı severim, çünkü böylece kendimi de önemli bir kimse gibigörürüm.
+
+166. Yüksek bir yerden aşağıya bakmaya korkarım.
+
+167. Ailemden herhangi birinin mahkemelik olması beni rahatsız etmez.
+
+168. Zihnimde bir gariplik var.
+
+169. Parayı ellemekten korkmam.
+
+170. Başkalarının hakkımda ne düşündükleri beni rahatsız etmez.
+
+171. Bir eğlencede başkaları yapsalar bile, ben taşkınlık yapmaktan rahatsız olurum.
+
+172. Çoğu kez utangaçlığımı örtbas etmek ihtiyacını duyarım.
+
+173. Okulu severdim.
+
+174. Hiç bayılma nöbeti geçirmedim.
+
+175. Pek az başım döner ya da hiç dönmez.
+
+176. Yılandan büyük bir korkum yoktur.
+
+177. Annem iyi bir kadındır.
+
+178. Hafızam genellikle iyidir.
+
+179. Cinsel konularda sıkıntım vardır.
+
+180. Yeni tanıştığım kimselerle konuşma konusu bulmada güçlük çekerim.
+
+181. Canım sıkılınca heyecan yaratmayı severim.
+
+182. Aklımı oynatmaktan korkuyorum.
+
+183. Dilencilere para vermeyi doğru bulmam.
+
+184. Sık sık nereden geldiğini bilmediğim sesler duyarım.
+
+185. Herkes kadar iyi işitirim.
+
+186. Bir şeyler yapmaya girişince ellerimin çok defa titrediğini fark ederim.
+
+187. Ellerimde beceriksizlik ya da sakarlık yok.
+
+188. Gözlerim yorulmadan uzun süre okuyabilirim.
+
+189. Çoğu zaman bütün vücudumda bir halsizlik duyarım.
+
+190. Başım pek az ağrır.
+
+191. Bazen utanınca çok terlerim.
+
+192. Yürürken dengemi hemen hemen hiç kaybetmem.
+
+193. Saman nezlesi ya da astım nöbetlerim yoktur.
+
+194. Hareketlerimi ve konuşmamı kontrol edemediğim fakat etrafımda olup bitenden haberdar olduğum nöbetler geçirdiğim oldu.
+
+195. Tanıdığım herkesi sevmem.
+
+196. Hiç görmediğim yerlere gitmekten hoşlanırım.
+
+197. Biri beni soymaya (her şeyimi almaya) çalışıyor.
+
+198. Çok az hayal kurarım.
+
+199. Çocuklara cinsiyetle ilgili temel gerçekler öğretilmelidir.
+
+200. Fikir ve düşüncelerimi çalmak isteyen biri var.
+
+201. Keşke bu kadar utangaç olmasam.
+
+202. Kendimi cezayı hak etmiş suçlu bir insan olarak görüyorum.
+
+203. Gazeteci olmak isterdim.
+
+204. Gazeteci olsaydım daha çok tiyatro haberleri yazmaktan hoşlanırdım.
+
+205. Bazen çalmaktan ya da dükkanlardan eşya aşırmaktan kendimi alamam.
+
+206. Bir çok kimseden daha çok dindarımdır.
+
+207. Çeşitli oyun ve eğlencelerden hoşlanırım.
+
+208. Flört etmeyi severim.
+
+209. Günahlarımın affedilmeyeceğine inanıyorum.
+
+210. Her şeyin tadı aynı geliyor.
+
+211. Gündüzleri uyuyabilirim fakat geceleri uyuyamam.
+
+212. Evdekiler bana çocuk muamelesi yapıyor.
+
+213. Yürürken kaldırımdaki yarıklara basmamaya dikkat ederim.
+
+214. Cildimde üzülmeye değer kabarıklık ya da sivilce yok.
+
+215. Çok içki kullandım.
+
+216. Başka ailelere göre bizim evde sevgi ve arkadaşlık pek azdır.
+
+217. Sık sık kendime bir şeyleri dert edinirim.
+
+218. Hayvanların eziyet çektiğini görmek beni üzmez.
+
+219. İnşaat müteahhitliğinden hoşlanacağımı sanıyorum.
+
+220. Annemi çok severim.
+
+221. Bilimden hoşlanırım.
+
+222. Karşılığını veremeyeceğim durumlarda bile arkadaşlarımdan yardım istemekte güçlük çekmem.
+
+223. Avlanmayı çok severim.
+
+224. Annem babam hep beraber olduğum kimselerden çok defa hoşlanmıyorlar.
+
+225. Bazen biraz dedikodu yaptığım olur.
+
+226. Ailemdeki bazı kişilerde canımı çok sıkan alışkanlıklar var.
+
+227. Uykuda gezdiğimi söylerler
+
+228. Bazen alışılmamış bir kolaylıkla karar verebileceğimi hissediyorum.
+
+229. Çeşitli kulüp ve derneklere üye olmayı isterim.
+
+230. Kalbimin hızlı çarptığını hemen hemen hiç hissetmem ve çok seyrek nefesim tıkanır.
+
+231. Cinsiyet hakkında konuşmayı severim.
+
+232. Bazen üzerime çok fazla iş alırım.
+
+233. Pek çok insan karşı çıksa da kendi fikrimi sonuna kadar savunurum.
+
+234. Çabuk kızar ve çabuk unuturum.
+
+235. Aile kurallarından oldukça bağımsız ve özgürüm.
+
+236. Sıklıkla kara kara düşünürüm.
+
+237. Akrabalarımın hemen hepsi bana karşı anlayış gösterir.
+
+238. Zaman zaman yerimde duramayacak kadar huzursuzluk duyduğum devreler olur.
+
+239. Aşkta hayal kırıklığına uğradım.
+
+240. Görünüşüme hiç aldırmam.
+
+241. Kendi içimde tutup başkalarına söylenemeyen şeyler hakkında sık sık rüya görürüm.
+
+242. Bir çoklarından daha sinirli sayılmam.
+
+243. Hemen hemen hiçbir ağrı ve sızım yok.
+
+244. Davranışlarım başkalarınca yanlış anlaşılmaya elverişlidir.
+
+245. Ailem beni olduğumdan daha hatalı bulur.
+
+246. Boynumda sık sık kırmızı lekeler olur.
+
+247. Kimseden sevgi görmüyorum.
+
+248. Bazen ortada hiçbir neden yokken hatta işler kötüye gittiği zaman bile kendimi fazlasıyla mutlu hissederim.
+
+249. Öbür dünyada şeytan ve cehennem olduğuna inanırım.
+
+250. Hayatta önüne her geleni kapmağa çalışan insanları suçlamam.
+
+251. Kendimi kaybedip yaptığım işi aksattığım ve etrafımda olup bitenlerin farkında olmadığım zamanlar oldu.
+
+252. Hiç kimse başkasının derdine aldırış etmiyor.
+
+253. Hatalı davranışlarını görsem bile insanlara arkadaşça davranabilirim.
+
+254. Birbiriyle şakalaşan kimseler arasında olmayı severim.
+
+255. Seçimlerde bazen oyumu pek az tanıdığım kimselere veririm.
+
+256. Gazetelerin ilgi çeken tek yeri resimli mizah sayfasıdır.
+
+257. Yaptığım işlerde genel olarak başarı elde edeceğime inanırım.
+
+258. Allah'ın varlığına inanırım.
+
+259. İşe başlamada güçlük çekerim.
+
+260. Okulda iken ağır öğrenenlerden biri idim.
+
+261. Ressam olsaydım çiçek resimleri yapardım.
+
+262. Daha güzel olmamam beni rahatsız etmez.
+
+263. Soğuk günlerde bile kolayca terlerim.
+
+264. Kendime tam anlamıyla güvenim vardır.
+
+265. Hiç kimseye güvenmemek en doğrusudur.
+
+266. Haftada bir ya da daha sık, çok heyecanlanırım.
+
+267. Topluluk içinde olduğumda üzerinde konuşacak uygun konularr bulmakda güçlük çekerim.
+
+268. Karamsar olduğum zaman heyecanlı bir olay hemen beni bu durumdan çıkarır.
+
+269. Bazen zevk için başkalarını kendimden korkuturum.
+
+270. Evden çıkarken kapının kilitli ve pencerenin kapalı olup olmadığı aklıma takılmaz.
+
+271. Başkalarının saflığını kendi çıkarlarına kullanan kimseleri ayıplamam.
+
+272. Bazen kendimi enerji dolu hissederim.
+
+273. Derimin bazı yerlerinde uyuşukluk hissederim.
+
+274. Görme gücüm eskisi kadar kuvvetlidir.
+
+275. Birisi zihnimi kontrol ediyor.
+
+276. Çocukları severim.
+
+277. Bazen bir madrabazın(Hilecinin) kurnazlığı beni o kadar eğlendirir ki yakayı ele vermemesini dilerim.
+
+278. Çok defa tanımadığım kimselerin bana eleştirici bir gözle baktıklarını hissederim.
+
+279. Her gün gereğinden fazla su içerim.
+
+280. Birçok kimseler kendilerine yararı dokunacağı için arkadaş edinirler.
+
+281. Kulaklarım çok az çınlar ya da uğuldar.
+
+282. Genellikle sevdiğim aile üyelerine karşı bazen nefret duyarım.
+
+283. Gazete muhabiri olsaydım en çok spor haberleri yazmayı isterdim.
+
+284. Hakkımda çok konuşulduğundan eminim.
+
+285. Arasıra açık saçık bir fıkraya güldüğüm olur.
+
+286. En çok yalnız olduğum zaman mutlu olurum.
+
+287. Arkadaşlarıma kıyasla beni korkutan şeyler çok azdır.
+
+288. Tekrarlanan mide bulantısı ve kusmalar bana sıkıntı verir.
+
+289. Bir suçlu avukatın becerikliliği sayesinde cezadan kurtulunca kanunlara karşı daima nefret duyarım.
+
+290. Çok gergin bir hava içinde çalışıyorum.
+
+291. Hayatımda bir ya da birkaç kere birisinin beni hipnotize ederek bana birşeyler yaptığını hissettim.
+
+292. Başkaları benimle konuşuncaya kadar ben onlarla konuşmağa başlamam.
+
+293. Birisi zihnimi etkilemeye çalışıyor.
+
+294. Kanunla hiç başım derde girmedi.
+
+295. Masal okumayı severim.
+
+296. Hiçbir neden yokken kendimi son derece neşeli hissettiğim zamanlar olur.
+
+297. Cinsiyetle ilgili düşünceler beni rahatsız eder.
+
+298. Birkaç kişinin birlikte başları derde girince en iyisi yakalarını kurtarmak için aynı hikayeyi uydurmak ve bundan caymamaktır.
+
+299. Duygularımın birçok kimselerden yoğun olduğunu düşünürüm.
+
+300. Hayatımda hiçbir zaman bebekle oynamaktan hoşlanmadım.
+
+301. Çoğu zaman hayat benim için bir yüktür.
+
+302. Cinsel davranışlarımdan dolayı hiçbir zaman başım derde girmedi.
+
+303. Bazı konularda o kadar alınganım ki onlar hakkında konuşmam bile.
+
+304. Okulda sınıf karşısında konuşmak bana çok güç gelirdi.
+
+305. Başkalarıyla beraber olduğum zaman bile kendimi yalnız hissederim.
+
+306. Bana karşı mümkün olan anlayış gösteriliyor.
+
+307. İyi beceremediğim oyunları oynamaya yanaşmam.
+
+308. Zaman zaman evi bırakıp gitmeyi çok istemişimdir.
+
+309. Birçokları kadar çabuk arkadaş edinebildiğimi sanıyorum.
+
+310. Cinsel hayatım doyurucudur.
+
+311. Gençlik yıllarımda bir devre ufak tefek şeyler çaldım.
+
+312. İnsanların arasında olmaktan hiç hoşlanmam.
+
+313. Değerli eşyasını tedbirsizce ortada bırakıp çalınmasına neden olan kimse bunu çalan kadar hatalıdır.
+
+314. Arasıra söylenemeyecek kadar kötü şeyler düşünürüm.
+
+315. Hayatın hep kötü tarafları bana nasip olmuştur.
+
+316. Hemen hemen herkesin başını derde sokmamak için yalan söyleyebileceğine inanırım.
+
+317. Birçok kimselerden daha hassasım.
+
+318. Günlük hayatım beni ilgilendiren şeylerle dolu.
+
+319. İnsanların çoğu başkalarına yardım etmek için zahmete girmekten hoşlanmazlar.
+
+320. Rüyalarımın çoğu cinsel konularla ilgilidir.
+
+321. Kolaylıkla mahcup olurum.
+
+322. Para ve işi kendime dert ederim.
+
+323. Başımdan çok tuhaf ve acayip olaylar geçmiştir.
+
+324. Hiç kimseye aşık olmadım.
+
+325. Ailemin yaptığı bazı şeyler beni korkutmuştur.
+
+326. Bazen kontrol edemediğim gülme ve ağlama nöbetlerine tutulurum.
+
+327. Annem ya da babam çok defa beni makul bulmadığım emirlere bile itaat ettirdiler.
+
+328. Zihnimi bir konu ya da iş üzerinde toplamakta güçlük çekerim.
+
+329. Hemen hemen hiç rüya görmedim.
+
+330. Hiç felç geçirmedim ya da kaslarımda olağanüstü bir halsizlik duymadım.
+
+331. Eğer insanlar sırf düşmanlık olsun diye beni engellemeselerdi daha başarılı olurdum.
+
+332. Bazen nezle olmadığım halde sesim çıkmaz ya da değişir.
+
+333. Beni hiç kimse anlamıyor.
+
+334. Bazen tuhaf kokular duyarım.
+
+335. Zihnimi bir konu üzerinde toplayamam.
+
+336. İnsanlara karşı sabrım çabuk tükenir.
+
+337. Çoğunlukla bir takım şeyler ve kimseler için meraklanıp huzursuzlanırım.
+
+338. Hayatımın çoğu kimselerinkinden daha fazla tasa ve kaygı içinde geçtiğine eminim.
+
+339. Çoğu zaman ölmüş olmayı isterdim.
+
+340. Bazen o kadar heyecanlanırım ki uykuya dalmam güçleşir.
+
+341. Bazen beni rahatsız edecek kadar iyi işitirim.
+
+342. Bana söylenenleri hemen unuturum.
+
+343. Önemsiz ufak şeylerde bile karar verip işe girişmeden önce durur ve düşünürüm.
+
+344. Gördüğüm kimse ile karşılaşmamak için sıklıkla yolumu değiştiririm.
+
+345. Sıklıkla olup bitenler bana gerçek değilmiş gibi gelir.
+
+346. Reklamlardaki ampuller gibi önemsiz şeyleri sayma alışkanlığım vardır.
+
+347. Bana gerçekten kötülük yapmak isteyen hiçbir düşmanım yoktur.
+
+348. Bana umduğumdan fazla dostluk gösteren insanlara karşı tetikte bulunmağa çalışırım.
+
+349. Acayip ve tuhaf düşüncelerim vardır.
+
+350. Yalnızken garip şeyler duyarım.
+
+351. Küçük bir seyahat için bile evden ayrılırken telaşlanır ve kaygılanırım.
+
+352. Beni incitmeyeceğini bildiğim şeylerden ya da insanlardan bile korktuğum oldu.
+
+353. Başkalarının daha önce toplanıp konuştuğu odaya girmekten çekinmem.
+
+354. Bıçak gibi çok keskin ve sivri şeyler kullanmaktan korkarım.
+
+355. Sevdiğim kimseleri bazen incitmekten hoşlanırım.
+
+356. Dikkatimi bir konu üzerinde toplamada birçok kişiden daha fazla güçlük çekerim.
+
+357. Yeteneğimi küçümsediğim için birçok defalar başladığım işi yarıda bıraktım.
+
+358. Kötü ve çok defa korkunç kelimeler zihnimi kurcalar ve bunlardan kendimi kurtaramam.
+
+359. Bazen önemsiz düşünceler aklımdan geçer ve beni günlerce rahatsız eder.
+
+360. Hemen hemen her gün beni korkutan bir şey olur.
+
+361. Her şeyi kötüye yorma eğilimindeyim.
+
+362. Birçok kimselerden çok daha hassasım.
+
+363. Bazen sevdiğim kimselerin beni incitmesinden hoşlandığım oldu.
+
+364. Hakkımda onur kırıcı ve kötü sözler söylüyorlar.
+
+365. Kapalı yerlerde huzursuzluk duyarım.
+
+366. İnsanlar arasında bile olsam çok defa kendimi yalnız hissederim.
+
+367. Yangından korkmam.
+
+368. Sonradan pişman olacağım şeyler yapmak ya da söylemek korkusuyla bazen bir kimseden uzak durduğum oldu.
+
+369. Kararsızlığım yüzünden yapılması gerekli bir çok işi yapamamışımdır.
+
+370. Çalışırken acele etmek zorunda olmaktan nefret ederim.
+
+371. Aşırı derecede kendini dinleyen bir insan değilim.
+
+372. Elimdeki işi en iyi şekilde yapmayı isterim.
+
+373. Yalnızca bir tek doğru din olduğundan eminim.
+
+374. Ara sıra zihnim her zamankinden daha ağır işler.
+
+375. Çok mutlu olduğum ve iyi çalıştığım zamanlarda neşesiz veya dertli bir insanla karşılaşmak keyfimi tamamen kaçırır.
+
+376. Polisler genellikle dürüsttür.
+
+377. Toplantılarda kalabalığa karışmaktan çok yalnız başıma oturur ya da bir tek kişiyle ahbaplık ederim.
+
+378. Kadınları sigara içerken görmekten hoşlanmam.
+
+379. Çok nadiren karamsarlığa kapılırım.
+
+380. Ne yapsam zevk alamıyorum.
+
+381. Kolay öfkelenen biri olduğumu söylerler.
+
+382. Yapmak istediğim şeylere karar verirken, başkalarının ne düşüneceğini dikkate almam.
+
+383. İnsanlar çoğu zaman beni hayal kırıklığına uğratırlar.
+
+384. Kendimle ilgili her şeyi anlatabileceğim hiç kimse yok.
+
+385. Şimşek çakması da korkularımdan biridir.
+
+386. Çok tertipli ve titizim.
+
+387. Ailem her davranışıma fazla karışıyor.
+
+388. Karanlıkta yalnız kalmaktan korkarım.
+
+389. Tasarlamış olduğum planlar çok defa o kadar güçlükle dolu göründü ki bunlardan vazgeçmek zorunda kaldım.
+
+390. Birinin hatasını önleme gayretimin yanlış anlaşılmasına çok üzülürüm.
+
+391. Dansa gitmeyi severim.
+
+392. Fırtınadan çok korkarım.
+
+393. Yük çekmeyen atlar dövülmeli ya da kamçılanmalıdır.
+
+394. Başkalarına sık sık akıl danışırım.
+
+395. Gelecek, bir insanın ciddi planlar yapamayacağı kadar belirsizdir.
+
+396. İşler yolunda gittiği zaman bile çoğu kez her şeye karşı bir aldırmazlık içinde olduğumu hissederim.
+
+397. Bazen güçlükler öylesine üst üste gelir ki onlarla baş edemeyecekmişim gibi hissederim.
+
+398. Çoğu kez “Keşke tekrar çocuk olsaydım” diye düşünürüm.
+
+399. Kolay kolay kızmam.
+
+400. Eğer bana fırsat verilse dünya için çok yararlı işler yapabilirim.
+
+401. Sudan hiç korkmam.
+
+402. Ne yapacağıma karar vermeden önce uzun uzun düşünürüm.
+
+403. Bir çok şeyin olup bittiği böyle bir devirde yaşamak hoş bir şey.
+
+404. Hatalarını düzelterek kendilerine yardım etmeye çalıştığım insanlar amacımı çoğu kez yanlış anlarlar.
+
+405. Yutkunmakta güçlük çekmem.
+
+406. Uzman dendiği halde benden pek fazla bilgili olmayan insanlarla sıklıkla karşılaşırım.
+
+407. Genel olarak sakinim ve kolay sinirlenmem.
+
+408. Bazı konular hakkında hislerimi o kadar gizleyebilirim ki insanlar bilmeden beni incitebilirler.
+
+409. Elimde olmadan çok ufak bir şeyden münakaşa çıkarıp karşımdakini kırıyorum.
+
+410. Madrabazı(hilekarı) kendi silahı ile alt etmekten hoşlanırım.
+
+411. İyi tanıdığım bir kimsenin başarısını duyduğum zaman adeta kendimi başarısızlığa uğramış hissederim.
+
+412. Hastalandığım zaman doktora gitmekten korkmam.
+
+413. Günahlarım için ne kadar ağır ceza görsem iyidir.
+
+414. Hayal kırıklıklarını o kadar ciddiye alırım ki bunları zihnimden söküp atamam.
+
+415. Fırsat verilse iyi bir önder olurum.
+
+416. Yakınlarımın sağlığından çok endişe ederim.
+
+417. Sırada beklerken biri önüme geçmeye kalkışırsa ona çıkışırım.
+
+418. Bazen hiçbir işe yaramadığımı düşünürüm.
+
+419. Küçükken okuldan sık sık kaçardım.
+
+420. Başımdan dinle ilgili olağan üstü yaşantılar geçti.
+
+421. Ailemde çok sinirli insanlar var.
+
+422. Ailemde bazı kişilerin yapmış olduğu işler beni utandırmıştır.
+
+423. Balık tutmayı çok severim.
+
+424. Hemen hemen her zaman açlık duyarım.
+
+425. Sık sık rüya görürüm.
+
+426. Kaba ya da can sıkıcı insanlara karşı bazen sert davrandığım olur.
+
+427. Açık saçık hikayelerden utanıp rahatsız olurum.
+
+428. Gazetelerin baş yazılarını okumaktan hoşlanırım.
+
+429. Ciddi konular üzerinde verilen konferansları dinlemekten hoşlanırım.
+
+430. Karşı cinsten olanları çekici bulurum.
+
+431. Başa gelebilecek talihsizlikler beni oldukça telaşlandırır.
+
+432. Kuvvetli siyasi fikirlerim vardır.
+
+433. Bir zamanlar hayali arkadaşlarım vardı.
+
+434. Otomobil yarışçısı olmayı isterdim.
+
+435. Genel olarak kadınlarla çalışmayı tercih ederim.
+
+436. İnsanlar genel olarak başkalarının haklarına saygı göstermekten çok kendi haklarına saygı gösterilmesini isterler.
+
+437. Kanuna aykırı davranmadan kanunun bir gediğinden yararlanmakta zarar yoktur.
+
+438. Bazı insanlardan o kadar nefret ederim ki ettiklerini bulunca içimden oh derim.
+
+439. Beklemek zorunda kalmak beni sinirlendirir.
+
+440. Başkalarına anlatmak için hoş fıkraları hatırımda tutmaya çalışırım.
+
+441. Uzun boylu kadınlardan hoşlanırım.
+
+442. Üzüntü yüzünden uyuyamadığım zamanlar oldu.
+
+443. Başkalarının gereği gibi yapamadığımı sandığı şeyleri yapmaktan vazgeçtiğim oldu.
+
+444. Başkalarının cahilce inançlarını düzeltmeye çalışmam.
+
+445. Küçükken heyecan veren şeyler yapmaktan hoşlanırdım.
+
+446. Az parayla oynanan kumardan hoşlanırım.
+
+447. Mastürbasyonda kendi cinsimle ilgili hayal beni tahrik eder.
+
+448. Sokakta, otobüs ve dükkanlarda bana bakan insanlardan rahatsız olurum.
+
+449. İnsanlarla bir arada olmayı sağladığı için toplantı ve davetleri severim.
+
+450. Kalabalığın verdiği coşkudan hoşlanırım.
+
+451. Neşeli arkadaşlar arasına karışınca üzüntülerimi unuturum.
+
+452. Arkadaş edinemiyorum.
+
+453. Küçükken mahalledeki arkadaş ya da akran gruplarına katılmaktan hoşlanmazdım.
+
+454. Orman ya da dağdaki bir kulübede tek başıma yaşamaktan mutlu olabilirim.
+
+455. İçinde bulunduğum grubun dedikodularına ve konuşmalarına sıklıkla konu olmam.
+
+456. İnsan makul bulmadığı kanunlara aykırı hareketlerinden ötürü cezalandırılmamalıdır.
+
+457. Bence insan hiçbir zaman alkollü bir içkiyi ağzına almamalıdır.
+
+458. Çocukken benimle en fazla ilgilenen erkek (baba, üvey baba vb.) bana karşı çok sert davrandı.
+
+459. Çaba göstermekle yenemeyeceğimi bildiğim bazı kötü alışkanlıklarım var.
+
+460. Az içki kullandım ya da hiç kullanmadım.
+
+461. Kısa bir zaman için bile olsa başladığım işi bir kenara bırakmak bana güç gelir.
+
+462. Küçük abdestimi yapmada ya da tutmada güçlük çekmem.
+
+463. Sek sek oyunu oynamamaktan hoşlanırdım.
+
+464. Hiç hayal görmedim.
+
+465. Birkaç kez hayatım boyunca yaptığım işte hevesimi yitirdiğim olmuştur.
+
+466. Doktor önerisi dışında hiçbir ilaç ya da uyku hapı kullanmadım.
+
+467. Çok defa (otomobil, plaka numarası gibi) hiç önemli olmayan numaraları ezberlerim.
+
+468. Sıklıkla sinirli ve asık suratlı olurum.
+
+469. Onlardan önce düşündüğüm için başkaları benim fikirlerimi kıskanıyorlar.
+
+470. Cinsiyetle ilgili şeylerden nefret ederim.
+
+471. Okulda hal ve gidişten kırık not alırdım.
+
+472. Yangın karşısında büyülenmiş gibi olurum.
+
+473. Mümkün olduğu kadar kalabalıktan uzak kalmaya çalışırım.
+
+474. Başkalarından daha sık küçük abdeste çıkmam.
+
+475. Sıkıştırıldığım zaman gerçeğin ancak bana zarar vermeyeceği kısmını söylerim.
+
+476. Tanrı bana özel bir görev vermiştir.
+
+477. Arkadaşlarımla birlikte işlediğim bir suçtan eşit şekilde suçlu olduğum zaman onları ele vermektense bütün suçu üzerime almayı tercih ederim.
+
+478. Çok değişik bir aile ortamından gelmiş olmayı isterdim.
+
+479. Yabancılarla tanışmaktan kaçınmam.
+
+480. Karanlıktan çok defa korkarım.
+
+481. Bir şeyden kurtulmak için hasta numarası yaptığım olmuştur.
+
+482. Trende, otobüste vb. rastladığım kimselerle çok defa konuşurum.
+
+483. Peygamberimiz göğe çıkma gibi mucizeler göstermiştir.
+
+484. Homoseksüelliği çok iğrenç buluyorum.
+
+485. Bir erkek bir kadınla beraber olunca genel olarak onun cinsiyetiyle ilgili şeyler düşünür.
+
+486. İdrarımda hiçbir zaman kan görmedim.
+
+487. Uğraştığım iş yolunda gitmeyince hemen vazgeçerim.
+
+488. Sık sık dua ederim.
+
+489. Yaşamı yalnızca üzüntülü, sıkıntılı tarafları ile benimseyen insanlara sempati duyarım.
+
+490. Haftada birkaç kere Kur'an okurum.
+
+491. Sadece bir tek dinin doğruluğuna inananlara tahammül edemem.
+
+492. Zelzele düşüncesi beni çok korkutur.
+
+493. Tam dikkat isteyen işleri, beni dikkatsizliğe sürükleyen işlere tercih ederim.
+
+494. Kapalı ve küçük yerlerde bulunmaktan çok rahatsız olurum.
+
+495. Kusurlarını düzeltmeye çalıştığım insanlarla genel olarak gayet açık konuşurum.
+
+496. Eşyayı hiçbir zaman çift görmem (Yani tek olan şeyleri çift görmem.)
+
+497. Macera hikayelerinden hoşlanırım.
+
+498. Açık sözlü olmak her zaman iyidir iyidir.
+
+499. Gerçekten önemsiz olan bir şey üzerinde bazen sebepsiz olarak haddinden fazla üzüldüğüm olur.
+
+500. Bana parlak gelen bir fikre hemen kapılır giderim.
+
+501. Başkalarından yardım beklemektense genel olarak bir işi kendi başıma yapmayı tercih ederim.
+
+502. Herhangi bir olay hakkındaki görüşümü başkalarına açıkça belirtmekten hoşlanırım.
+
+503. Başkalarının hareketlerini çok beğenip beğenmediğimi pek belli etmem.
+
+504. Değersiz gördüğüm ya da acıdığım kimseye bu duygularımı belli etmem.
+
+505. Zaman zaman kendimi öyle güçlü ve enerjik hissederim ki böyle zamanlarda günlerce uykuya ihtiyat duymadığım olur.
+
+506. Sinirleri çok gergin bir insanım.
+
+507. İşler iyi gidince aslan payını kendilerine alan fakat hata yapılınca bunu başkalarının üzerine atan insanlarla karşılaştım.
+
+508. Koku alma duyum herkes kadar iyidir.
+
+509. Bazen çekingenliğim yüzünden hakkımı arayamam.
+
+510. Pislik ve kir beni ürkütüp iğrendirir.
+
+511. Herkesten gizli tuttuğum bir hayal dünyam var.
+
+512. Yıkanmaktan hoşlanmam.
+
+513. Kış mevsimini severim.
+
+514. Erkek gibi davranan kadınlardan hoşlanırım.
+
+515. Evimizde daima gerekli ihtiyaç maddeleri bulunurdu (yeteri kadar yiyecek, giyecek vs. gibi).
+
+516. Ailemde çabuk kızan kimseler var.
+
+517. Hiçbir şeyi iyi yapamam.
+
+518. Bazı durumlarda olduğumdan daha fazla üzüntülü görünmeye çalıştığım olmuştur.
+
+519. Cinsel organlarımda bir bozukluk var.
+
+520. Genel olarak görüşlerimi kuvvetle savunurum.
+
+521. Bir grup içinde konuşma yapmam ve çok iyi bildiğim bir konuda fikrimi söylemem istenince kaygılanmam.
+
+522. Örümcekten korkmam.
+
+523. Yüzüm hemen hemen hiç kızarmaz.
+
+524. Kapı tokmaklarından hastalık veya mikrop alacağımdan korkmam.
+
+525. Bazı hayvanlardan ürkerim.
+
+526. Gelecek bana ümitsiz görünüyor.
+
+527. Ailem ve yakın akrabalarım birbirleri ile oldukça iyi geçinirler.
+
+528. Yüzüm başkalarından daha sık kızarmaz.
+
+529. Pahalı elbiseler giymeyi isterim.
+
+530. Sebepsiz yere sık sık içim sıkılıyor ve ağlamak istiyorum.
+
+531. Bir konu üzerinde karar verdiğimi zannetsem bile başka biri fikrimi kolayca değiştirebilir.
+
+532. Acıya başkaları kadar ben de dayanabilirim.
+
+533. Sık sık geğirmekten şikayetim yoktur.
+
+534. Çoğunlukla başladığım işten en son vazgeçen ben olurum.
+
+535. Hemen hemen her zaman ağzımda kuruluk olur.
+
+536. Beni acele ettirenlere kızarım.
+
+537. Afrika'da arslan avına çıkmak isterdim.
+
+538. Terzilikten hoşlanabileceğimi sanmıyorum.
+
+539. Fareden korkmam.
+
+540. Yüzüme hiç felç inmedi.
+
+541. Cildime ufak bir şeyin dokunmasından çok huylanırım.
+
+542. Şimdiye kadar rengi kapkara büyük abdest yapmadım.
+
+543. Haftada birkaç kez korkunç bir şey olacakmış duygusuna kapılırım.
+
+544. Çoğu zaman yorgunluk hissederim.
+
+545. Bazen aynı rüyayı tekrar tekrar görürüm.
+
+546. Tarih okumaktan hoşlanırım.
+
+547. Toplantı ve kalabalık eğlencelerden hoşlanırım.
+
+548. Elimdeyse açık saçık numaraların yapılacağı eğlence yerlerine gitmem.
+
+549. Karşıma çıkacak güçlüklerden korkar ve kaçarım.
+
+550. Kapı mandallarını onarmaktan hoşlanırım.
+
+551. Bazen başkalarının kafamın içindekileri okuduğundan eminim.
+
+552. Bilimsel yayınları okumaktan hoşlanırım.
+
+553. Açık yerlerde veya geniş meydanlarda tek başıma kalmaktan korkarım.
+
+554. Sıkıntım oldukça alkol alırım.
+
+555. Bazen çıldıracakmış gibi olurum.
+
+556. Kılık kıyafetime çok dikkat ederim.
+
+557. Hayatı fazla ciddiye almıyorum.
+
+558. Birçok kimseler kötü cinsel faaliyetlerinden dolayı suçludurlar.
+
+559. Gece yarısı çoğunlukla korkuya kapıldığım olur.
+
+560. Bir şeyi nereye koyduğumu unutmaktan çok şikayetçiyimdir.
+
+561. Ailem benim için büyük bir dayanaktır.
+
+562. Çocukken en fazla bağlandığım ve hayran kaldığım kimse bir kadındı.
+
+563. Macera hikayelerini aşk hikayelerinden daha çok severim.
+
+564. Yapmak istediğim fakat başkalarının beğenmediği bir işten kolayca vazgeçerim.
+
+565. Yüksek bir yerde iken içimden atlama isteği gelir.
+
+566. Sinemalardaki aşk sahnelerini severim.
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+var MMPI_FONTS = {"regular":"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","bold":"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"};
+/*PDF-START*/
+// Orijinal MMPI cevap anahtarı formunun (2 sayfa, A4 dikey) aynı düzende PDF çıktısı.
+// Ölçüler taranmış formdan alındı: başlık, 30 satırlık bloklar, her blokta [no | D | Y] hücreleri.
+function buildMmpiPdf(jsPDF, o) {
+  var ans = o.answers, info = o.info || {};
+  var doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait', compress: true });
+  doc.addFileToVFS('LS-Regular.ttf', o.fonts.regular);
+  doc.addFont('LS-Regular.ttf', 'LS', 'normal');
+  doc.addFileToVFS('LS-Bold.ttf', o.fonts.bold);
+  doc.addFont('LS-Bold.ttf', 'LS', 'bold');
+  doc.setProperties({ title: 'MMPI Testi Cevap Anahtarı', subject: 'MMPI cevap anahtarı', creator: 'MMPI Cevap Anahtarı' });
+
+  var X0 = 17.3, Y0 = 48.9;           // tablo sol üst köşe (mm)
+  var NW = 7.4, DW = 5.2, YW = 5.2;   // numara, D, Y sütun genişlikleri
+  var GW = NW + DW + YW;              // bir blok genişliği
+  var HH = 7.3, RH = 6.29;            // başlık ve satır yüksekliği
+  var LW = 0.22;                      // çizgi kalınlığı
+  var PAGES = [{ from: 1, to: 300, groups: 10 }, { from: 301, to: 566, groups: 9 }];
+
+  function clean(s) { return String(s || '').replace(/[^ A-Za-z0-9.,:;\-–\/()'çÇğĞıİöÖşŞüÜâÂîÎûÛ]/g, ''); }
+  function capShift(pt) { return pt * 0.3528 * 0.716 / 2; }   // dikey ortalama için yarım büyük harf yüksekliği
+
+  PAGES.forEach(function (pg, pi) {
+    if (pi > 0) doc.addPage('a4', 'portrait');
+
+    doc.setTextColor(0, 0, 0);
+    doc.setFont('LS', 'bold'); doc.setFontSize(16);
+    doc.text('MMPI TESTİ CEVAP ANAHTARI', 105, 23.5, { align: 'center' });
+
+    // 1) seçilen hücrelerin hafif dolgusu
+    doc.setFillColor(226, 226, 226);
+    for (var g = 0; g < pg.groups; g++) {
+      var s0 = pg.from + 30 * g, e0 = Math.min(s0 + 29, pg.to), gx = X0 + g * GW;
+      for (var n = s0; n <= e0; n++) {
+        var v = ans[n];
+        if (!v) continue;
+        var cx = gx + NW + (v === 'D' ? 0 : DW), cy = Y0 + HH + (n - s0) * RH;
+        doc.rect(cx, cy, v === 'D' ? DW : YW, RH, 'F');
+      }
+    }
+
+    // 2) ızgara
+    doc.setDrawColor(0, 0, 0); doc.setLineWidth(LW); doc.setLineCap('butt');
+    for (var g2 = 0; g2 < pg.groups; g2++) {
+      var s1 = pg.from + 30 * g2, e1 = Math.min(s1 + 29, pg.to), rows = e1 - s1 + 1, gx2 = X0 + g2 * GW;
+      var bottom = Y0 + HH + rows * RH;
+      [0, NW, NW + DW, GW].forEach(function (dx) { doc.line(gx2 + dx, Y0, gx2 + dx, bottom); });
+      doc.line(gx2, Y0, gx2 + GW, Y0);
+      doc.line(gx2, Y0 + HH, gx2 + GW, Y0 + HH);
+      for (var r = 1; r <= rows; r++) doc.line(gx2, Y0 + HH + r * RH, gx2 + GW, Y0 + HH + r * RH);
+    }
+
+    // 3) başlık harfleri, numaralar, işaretler
+    for (var g3 = 0; g3 < pg.groups; g3++) {
+      var s2 = pg.from + 30 * g3, e2 = Math.min(s2 + 29, pg.to), gx3 = X0 + g3 * GW;
+      doc.setFont('LS', 'normal'); doc.setFontSize(9); doc.setTextColor(0, 0, 0);
+      doc.text('D', gx3 + NW + DW / 2, Y0 + HH / 2 + capShift(9), { align: 'center' });
+      doc.text('Y', gx3 + NW + DW + YW / 2, Y0 + HH / 2 + capShift(9), { align: 'center' });
+      doc.setFont('LS', 'bold'); doc.setFontSize(8.5);
+      for (var n2 = s2; n2 <= e2; n2++) {
+        var top = Y0 + HH + (n2 - s2) * RH;
+        doc.text(String(n2), gx3 + NW / 2, top + RH / 2 + capShift(8.5), { align: 'center' });
+        var v2 = ans[n2];
+        if (v2) {
+          var x1 = gx3 + NW + (v2 === 'D' ? 0 : DW), w = v2 === 'D' ? DW : YW, pad = 1.2;
+          doc.setLineWidth(0.5); doc.setLineCap('round');
+          doc.line(x1 + pad, top + pad, x1 + w - pad, top + RH - pad);
+          doc.line(x1 + w - pad, top + pad, x1 + pad, top + RH - pad);
+          doc.setLineWidth(LW); doc.setLineCap('butt');
+        }
+      }
+    }
+
+    // 4) alt bilgi alanları (yalnızca 2. sayfa, orijinaldeki gibi)
+    if (pi === 1) {
+      var fields = [
+        { label: 'İSİM', val: info.isim, lx: 13.3, x1: 31.9, x2: 80.2, y: 259 },
+        { label: 'DOĞUM TARİHİ', val: info.dogum, lx: 13.3, x1: 31.9, x2: 80.2, y: 266 },
+        { label: 'YAŞ', val: info.yas, lx: 90, x1: 103.5, x2: 128, y: 259 },
+        { label: 'CİNSİYET', val: info.cins, lx: 90, x1: 103.5, x2: 128, y: 266 },
+        { label: 'TEST ALMA TARİHİ', val: info.test, lx: 145.3, x1: 167.4, x2: 196.5, y: 259 }
+      ];
+      fields.forEach(function (f) {
+        doc.setFont('LS', 'bold'); doc.setFontSize(6.5); doc.setTextColor(0, 0, 0);
+        doc.text(f.label, f.lx, f.y, { align: 'left' });
+        doc.setLineWidth(0.2); doc.setDrawColor(0, 0, 0);
+        doc.line(f.x1, f.y + 0.6, f.x2, f.y + 0.6);
+        var t = clean(f.val);
+        if (t) {
+          doc.setFont('LS', 'normal'); doc.setFontSize(9);
+          doc.text(t, f.x1 + 1, f.y - 0.4, { align: 'left', maxWidth: f.x2 - f.x1 - 1 });
+        }
+      });
+      if (o.code) {
+        doc.setFont('LS', 'bold'); doc.setFontSize(6); doc.setTextColor(110, 110, 110);
+        doc.text('AKTARIM KODU', 13.3, 276, { align: 'left' });
+        doc.setFont('courier', 'normal'); doc.setFontSize(5.5);
+        doc.text(doc.splitTextToSize(o.code, 180), 13.3, 279.5, { align: 'left' });
+      }
+    }
+  });
+
+  return doc.output('arraybuffer');
+}
+/*PDF-END*/
+
+</script>
+<script>
+(function () {
+  'use strict';
+  var SITE_URL = 'https://mmpi.afatihyavasi.com/';   // paylaşılan linkler, sayfa nereden açılırsa açılsın buraya gider
+  var N = 566, KEY = 'mmpi-sorulari-v1', MDKEY = 'mmpi-sorulari-md-v1', ONB_KEY = 'mmpi-onboarded-v1', PREF_KEY = 'mmpi-prefs-v1';
+  var INFO_KEYS = ['isim', 'yas', 'cins', 'dogum', 'test'];
+  var SHORT = { isim: 'n', yas: 'y', cins: 'c', dogum: 'd', test: 't' };
+  var answers = new Array(N + 1).fill(''), info = {}, pos = 1;
+  var questions = {}, haveQ = false;
+  var viewer = null;           // paylaşılan salt okunur veri: {answers, info}
+  var view = 'home', advTimer = null, prefs = { auto: true };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var $$ = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+  /* ---------- kayıt ---------- */
+  function enc(arr) { var s = ''; for (var i = 1; i <= N; i++) s += arr[i] || '-'; return s; }
+  function save() { lsSet(KEY, JSON.stringify({ a: enc(answers), info: info, pos: pos })); }
+  (function restore() {
+    try {
+      var d = JSON.parse(lsGet(KEY) || 'null');
+      if (d) {
+        for (var i = 1; i <= N; i++) { var c = (d.a || '').charAt(i - 1); answers[i] = (c === 'D' || c === 'Y') ? c : ''; }
+        info = d.info || {};
+        pos = Math.min(N, Math.max(1, +d.pos || 1));
+      }
+      var p = JSON.parse(lsGet(PREF_KEY) || 'null');
+      if (p && typeof p.auto === 'boolean') prefs.auto = p.auto;
+    } catch (e) {}
+  })();
+  function counts(arr) {
+    var d = 0, y = 0;
+    for (var i = 1; i <= N; i++) { if (arr[i] === 'D') d++; else if (arr[i] === 'Y') y++; }
+    return { d: d, y: y, done: d + y, blank: N - d - y };
+  }
+  function firstBlank(arr, from) {
+    from = from || 1;
+    for (var i = from; i <= N; i++) if (!arr[i]) return i;
+    for (var j = 1; j < from; j++) if (!arr[j]) return j;
+    return 0;
+  }
+  function pct(n) { return Math.floor(n / N * 100); }
+
+  /* ---------- sorular (sorular.md) ---------- */
+  function parseMd(t) {
+    var map = {}, c = 0;
+    String(t || '').split(/\r?\n/).forEach(function (l) {
+      var r = /^\s*(\d{1,3})[.)]\s+(.+?)\s*$/.exec(l);
+      if (r) { var n = +r[1]; if (n >= 1 && n <= N && !map[n]) { map[n] = r[2]; c++; } }
+    });
+    return { map: map, count: c };
+  }
+  async function loadQuestions() {
+    try {
+      var r = await fetch('sorular.md', { cache: 'no-cache' });
+      if (r.ok) { var p = parseMd(await r.text()); if (p.count) { questions = p.map; haveQ = true; return; } }
+    } catch (e) {}
+    var inline = $('sorular-md');       // file:// ile açıldığında fetch çalışmaz, gömülü kopya devreye girer
+    if (inline) { var p1 = parseMd(inline.textContent); if (p1.count) { questions = p1.map; haveQ = true; return; } }
+    var local = lsGet(MDKEY);
+    if (local) { var p2 = parseMd(local); if (p2.count) { questions = p2.map; haveQ = true; } }
+  }
+  function qText(n) { return questions[n] || ('Soru ' + n); }
+
+  /* ---------- kısa kod ---------- */
+  function b64u(bytes) {
+    var s = ''; for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function unb64u(t) {
+    try {
+      var s = atob(t.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((t.length + 3) % 4));
+      var out = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) out[i] = s.charCodeAt(i);
+      return out;
+    } catch (e) { return null; }
+  }
+  var NB = Math.ceil(N / 5);
+  function encodeAnswers(arr) {            // 5 cevap tek bayta (üçlü sayı sistemi): 566 cevap = 114 bayt
+    var bytes = [];
+    for (var i = 1; i <= N; i += 5) {
+      var b = 0, m = 1;
+      for (var k = 0; k < 5; k++) {
+        var v = (i + k <= N) ? arr[i + k] : '';
+        b += (v === 'D' ? 1 : v === 'Y' ? 2 : 0) * m; m *= 3;
+      }
+      bytes.push(b);
+    }
+    return b64u(bytes);
+  }
+  function decodeAnswers(s) {
+    var bytes = unb64u(s);
+    if (!bytes || bytes.length < NB) return null;
+    var out = new Array(N + 1).fill(''), i = 1;
+    for (var bi = 0; bi < NB; bi++) {
+      var b = bytes[bi]; if (b > 242) return null;
+      for (var k = 0; k < 5; k++) { var t = b % 3; b = (b - t) / 3; if (i <= N) out[i] = t === 1 ? 'D' : t === 2 ? 'Y' : ''; i++; }
+    }
+    return out;
+  }
+  function infoToken(inf) {
+    var o = {}, any = false;
+    INFO_KEYS.forEach(function (k) { if (inf[k]) { o[SHORT[k]] = inf[k]; any = true; } });
+    return any ? b64u(new TextEncoder().encode(JSON.stringify(o))) : '';
+  }
+  function tokenToInfo(t) {
+    var inf = {};
+    try {
+      var o = JSON.parse(new TextDecoder().decode(unb64u(t)));
+      INFO_KEYS.forEach(function (k) { if (typeof o[SHORT[k]] === 'string') inf[k] = o[SHORT[k]]; });
+    } catch (e) {}
+    return inf;
+  }
+  function makeCode(arr, inf) { var t = inf ? infoToken(inf) : ''; return 'M1.' + encodeAnswers(arr) + (t ? '.' + t : ''); }
+  function parseShared(text) {
+    var t = String(text || '').replace(/\s+/g, '');
+    var m = /M1\.([A-Za-z0-9_-]+)(?:\.([A-Za-z0-9_-]+))?/.exec(t);
+    if (!m) return null;
+    var a = decodeAnswers(m[1]);
+    if (!a) return null;
+    return { answers: a, info: m[2] ? tokenToInfo(m[2]) : {} };
+  }
+
+  /* ---------- bildirim ---------- */
+  var ICONS = {
+    ok: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>',
+    info: '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>'
+  };
+  function toast(text, kind) {
+    var el = document.createElement('div');
+    el.className = 'toast';
+    el.innerHTML = ICONS[kind || 'ok'];
+    var s = document.createElement('span'); s.textContent = text; el.appendChild(s);
+    $('toasts').appendChild(el);
+    setTimeout(function () { el.classList.add('out'); setTimeout(function () { el.remove(); }, 200); }, 2600);
+  }
+
+  /* ---------- ekranlar ---------- */
+  var VIEWS = ['home', 'step', 'map', 'result', 'done'];
+  function setView(v) {
+    clearTimeout(advTimer);
+    view = v;
+    VIEWS.forEach(function (n) { $('v-' + n).hidden = (n !== v); });
+    $('main').classList.toggle('narrow', v === 'step' || v === 'home' || v === 'done');
+    $('hdr-map').hidden = v !== 'step';
+    $('hdr-home').hidden = v === 'home' || !!viewer;
+    $('site-foot').hidden = !(v === 'home' || v === 'result');
+    $('site-foot').firstElementChild.classList.toggle('narrow', v === 'home');   // içerikle aynı hizada dursun
+    if (v === 'home') renderHome();
+    if (v === 'step') renderStep();
+    if (v === 'map') renderMap();
+    if (v === 'result') renderResult();
+    if (v === 'done') renderDone();
+    window.scrollTo(0, 0);
+  }
+  // Soru ve genel bakış ekranında yanlışlıkla çıkmayı önlemek için onay iste; diğer ekranlardan doğrudan dön.
+  function goHome() {
+    if (view === 'home') return;
+    if (view !== 'step' && view !== 'map') { if (viewer) exitViewer(); else setView('home'); return; }
+    var c = counts(answers);
+    $('dlg-home-p').textContent = c.done
+      ? N + ' sorunun ' + c.done + ' tanesi cevaplandı ve bu cihazda kaydedildi. Ana ekrandan kaldığın yere tek dokunuşla dönebilirsin.'
+      : 'Henüz cevap vermedin. İstediğin zaman ana ekrandan yeniden başlayabilirsin.';
+    openDialog($('dlg-home'));
+  }
+
+  function renderHome() {
+    var c = counts(answers), started = c.done > 0;
+    $('home-new').hidden = started;
+    $('home-progress').hidden = !started;
+    $('start').textContent = started ? (c.blank ? 'Devam et' : 'Cevapları gözden geçir') : 'Teste başla';
+    $('home-result').hidden = !started;
+    $('home-transfer').hidden = !started;
+    if (started) {
+      $('hp-pct').textContent = '%' + pct(c.done);
+      $('hp-bar').style.width = (c.done / N * 100) + '%';
+      $('hp-sub').textContent = c.blank ? c.done + ' / ' + N + ' soru cevaplandı, ' + c.blank + ' soru kaldı.' : 'Tüm sorular cevaplandı.';
+      $('hp-d').textContent = c.d; $('hp-y').textContent = c.y; $('hp-b').textContent = c.blank;
+    }
+    $('set-auto').setAttribute('aria-checked', prefs.auto);
+    $('no-q').hidden = haveQ;
+    $('import-box').hidden = haveQ;
+    INFO_KEYS.forEach(function (k) { var el = $('f-' + k); if (el.value !== (info[k] || '')) el.value = info[k] || ''; });
+  }
+
+  function renderStep(dir) {
+    var c = counts(answers);
+    $('q-pos').textContent = pos;
+    $('q-done').textContent = c.done;
+    $('q-pct').textContent = '(%' + pct(c.done) + ')';
+    $('prog').style.width = (c.done / N * 100) + '%';
+    $('q-num').textContent = '#' + pos;
+    $('q-state').innerHTML = answers[pos] === 'D' ? '<span class="badge badge-d">Doğru</span>' : answers[pos] === 'Y' ? '<span class="badge badge-y">Yanlış</span>' : '';
+    $('q-text').textContent = qText(pos);
+    $('b-d').setAttribute('aria-pressed', answers[pos] === 'D');
+    $('b-y').setAttribute('aria-pressed', answers[pos] === 'Y');
+    $('b-prev').disabled = pos <= 1;
+    $('b-next-lbl').textContent = pos >= N ? 'Sonuca git' : (answers[pos] ? 'Sonraki' : 'Atla');
+    $('b-clear').hidden = !answers[pos];
+    $('auto-sw').setAttribute('aria-checked', prefs.auto);
+    if (dir) {
+      var b = $('q-body');
+      b.classList.remove('in-next', 'in-prev'); void b.offsetWidth;
+      b.classList.add(dir === 'prev' ? 'in-prev' : 'in-next');
+    }
+  }
+  var MILESTONES = [25, 50, 75];
+  function answer(v) {
+    var before = counts(answers).done;
+    answers[pos] = v; save();
+    var after = counts(answers).done;
+    renderStep();
+    if (after > before) {
+      MILESTONES.forEach(function (m) { if (before < N * m / 100 && after >= N * m / 100) toast('Soruların %' + m + '’i tamam. Ara vermek istersen cevapların kayıtlı.', 'info'); });
+      if (after === N) toast('Tüm sorular cevaplandı.');
+    }
+    clearTimeout(advTimer);
+    if (prefs.auto) advTimer = setTimeout(next, 200);
+  }
+  function next() {
+    clearTimeout(advTimer);
+    if (pos >= N) { finishTest(); return; }
+    pos++; save(); renderStep('next');
+  }
+  function back() { clearTimeout(advTimer); if (pos > 1) { pos--; save(); renderStep('prev'); } }
+
+  var mapFilter = '';
+  function renderMap() {
+    var c = counts(answers), box = $('map'), frag = document.createDocumentFragment();
+    $('map-sub').textContent = c.done + ' / ' + N + ' cevaplandı. Bir numaraya dokunarak o soruya git.';
+    $('mc-b').textContent = c.blank; $('mc-d').textContent = c.d; $('mc-y').textContent = c.y;
+    $('map-first').hidden = !c.blank;
+    for (var i = 1; i <= N; i++) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'cell' + (i === pos ? ' cur' : '');
+      b.dataset.n = i; b.dataset.v = answers[i] || '';
+      b.textContent = i; b.setAttribute('aria-label', 'Soru ' + i + (answers[i] ? ', ' + (answers[i] === 'D' ? 'Doğru' : 'Yanlış') : ', boş'));
+      frag.appendChild(b);
+    }
+    box.textContent = ''; box.appendChild(frag);
+    box.className = 'map' + (mapFilter ? ' map-filter-' + mapFilter : '');
+  }
+
+  var resFilter = '', resQuery = '';
+  function renderResult() {
+    var own = !viewer, data = own ? { answers: answers, info: info } : viewer;
+    var c = counts(data.answers);
+    $('res-h').textContent = own ? 'Sonuç' : 'Paylaşılan cevaplar';
+    var bits = [];
+    if (data.info.isim) bits.push(data.info.isim);
+    if (data.info.yas) bits.push(data.info.yas + ' yaş');
+    if (data.info.cins) bits.push(data.info.cins);
+    if (data.info.test) bits.push('Test tarihi ' + fmtDate(data.info.test));
+    $('res-sub').textContent = bits.length ? bits.join(', ') : (own ? 'Cevaplarını indir, paylaş ya da düzenle.' : '');
+    $('viewer-note').hidden = own;
+    $('share-box').hidden = !own;
+    $('res-edit').hidden = !own;
+    $('viewer-exit').hidden = own;
+    $('res-done').textContent = c.done + ' / ' + N + ' soru cevaplandı (%' + pct(c.done) + ').';
+    $('seg-d').style.width = (c.d / N * 100) + '%';
+    $('seg-y').style.width = (c.y / N * 100) + '%';
+    $('seg-b').style.width = (c.blank / N * 100) + '%';
+    $('st-d').textContent = c.d; $('st-y').textContent = c.y; $('st-b').textContent = c.blank;
+    $('blank-alert').hidden = !c.blank;
+    $('blank-count').textContent = c.blank + ' soruyu';
+    $('blank-go').hidden = !own || !c.blank;
+    if (own) refreshShare();
+    var list = $('alist'), frag = document.createDocumentFragment();
+    for (var i = 1; i <= N; i++) {
+      var row = document.createElement('div'), a = data.answers[i] || '';
+      row.className = 'arow' + (own ? ' click' : '');
+      row.dataset.n = i; row.dataset.v = a;
+      if (own) { row.tabIndex = 0; row.setAttribute('role', 'button'); }
+      var n = document.createElement('span'); n.className = 'n'; n.textContent = i;
+      var v = document.createElement('span');
+      if (a) { v.className = 'badge ' + (a === 'D' ? 'badge-d' : 'badge-y'); v.textContent = a === 'D' ? 'Doğru' : 'Yanlış'; }
+      else { v.className = 'blank'; v.textContent = 'Boş'; }
+      var t = document.createElement('span'); t.className = 't'; t.textContent = qText(i);
+      row.appendChild(n); row.appendChild(v); row.appendChild(t);
+      frag.appendChild(row);
+    }
+    list.textContent = ''; list.appendChild(frag);
+    applyResFilter();
+  }
+  function applyResFilter() {
+    var q = resQuery.trim().toLocaleLowerCase('tr'), shown = 0;
+    $$('#alist .arow').forEach(function (r) {
+      var v = r.dataset.v, ok = !resFilter || (resFilter === 'B' ? !v : v === resFilter);
+      if (ok && q) ok = r.dataset.n === q || r.lastChild.textContent.toLocaleLowerCase('tr').indexOf(q) >= 0;
+      r.hidden = !ok; if (ok) shown++;
+    });
+    $('alist').hidden = !shown;
+    $('a-empty').hidden = !!shown;
+  }
+
+  /* ---------- paylaşım ---------- */
+  function shareInfoOn() { return $('share-info').getAttribute('aria-checked') === 'true'; }
+  function shareCode() { return makeCode(answers, shareInfoOn() ? info : null); }
+  function shareLink() { return SITE_URL + '#k=' + shareCode(); }
+  function refreshShare() { loadQr(renderShareQr); }
+  // btn verilirse geri bildirim düğmenin üstünde de gösterilir: modal açıkken bildirimler arkada kalır.
+  function copyText(text, okText, btn) {
+    function done(ok) {
+      toast(ok ? okText : 'Kopyalanamadı. Metni elle seçip kopyala.', ok ? 'ok' : 'info');
+      if (!btn) return;
+      if (!btn.dataset.html) btn.dataset.html = btn.innerHTML;
+      btn.innerHTML = ok ? '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Kopyalandı' : 'Kopyalanamadı';
+      clearTimeout(btn._t); btn._t = setTimeout(function () { btn.innerHTML = btn.dataset.html; }, 1800);
+    }
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      (document.querySelector('dialog[open]') || document.body).appendChild(ta); ta.select();   // modal dışı alanlar seçilemez
+      var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+      ta.remove(); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    else fallback();
+  }
+
+  /* ---------- başka cihazda devam et ---------- */
+  // #k= psikolog için salt okunur görünüm açar; #devam= cevapları açıldığı cihaza kaydeder.
+  function transferCode() { return makeCode(answers, info); }
+  function transferLink() { return SITE_URL + '#devam=' + transferCode(); }
+  var qrState = '';   // '', 'loading', 'ready', 'failed'
+  var qrWaiting = [];
+  function loadQr(cb) {
+    if (window.qrcode) { qrState = 'ready'; return cb(); }
+    if (qrState === 'failed') return cb();          // kütüphane yoksa çağıran kendi yedeğini gösterir
+    qrWaiting.push(cb);
+    if (qrState === 'loading') return;
+    qrState = 'loading';
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';
+    function flush() { var q = qrWaiting; qrWaiting = []; q.forEach(function (f) { f(); }); }
+    s.onload = function () { qrState = window.qrcode ? 'ready' : 'failed'; flush(); };
+    s.onerror = function () { qrState = 'failed'; flush(); };
+    document.head.appendChild(s);
+  }
+  function makeQr(text) { var qr = qrcode(0, 'L'); qr.addData(text); qr.make(); return qr; }
+  function renderShareQr() {
+    var box = $('share-qr-img');
+    if (!window.qrcode) { box.innerHTML = '<span class="qr-ph">Karekod için internet bağlantısı gerekli</span>'; $('qr-share').disabled = true; return; }
+    box.innerHTML = makeQr(shareLink()).createSvgTag(4, 0);
+    $('qr-share').disabled = false;
+  }
+  // Paylaşılabilir karekod görseli: beyaz zemin, karekod, altında kısa açıklama.
+  function qrImage(cb) {
+    var qr = makeQr(shareLink()), n = qr.getModuleCount();
+    var pad = 64, cell = Math.floor(640 / n), q = cell * n, w = q + pad * 2, hgt = w + 132;
+    var cv = document.createElement('canvas'); cv.width = w; cv.height = hgt;
+    var g = cv.getContext('2d');
+    g.fillStyle = '#ffffff'; g.fillRect(0, 0, w, hgt);
+    g.fillStyle = '#09090b';
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) g.fillRect(pad + c * cell, pad + r * cell, cell, cell);
+    var who = shareInfoOn() && (info.isim || '').trim();
+    g.textAlign = 'center';
+    g.font = '600 34px Geist, system-ui, sans-serif';
+    g.fillText(who ? who + ' · MMPI cevapları' : 'MMPI cevapları', w / 2, q + pad + 52);
+    g.fillStyle = '#71717a'; g.font = '24px Geist, system-ui, sans-serif';
+    g.fillText('Okutunca salt okunur açılır · mmpi.afatihyavasi.com', w / 2, q + pad + 94);
+    cv.toBlob(cb, 'image/png');
+  }
+  function canShareFiles() {
+    try { return !!(navigator.canShare && navigator.canShare({ files: [new File([''], 'x.png', { type: 'image/png' })] })); } catch (e) { return false; }
+  }
+  function shareQr() {
+    if (!window.qrcode) return;
+    qrImage(function (blob) {
+      if (!blob) { toast('Karekod görseli oluşturulamadı.', 'info'); return; }
+      var file = new File([blob], 'MMPI-karekod.png', { type: 'image/png' });
+      if (canShareFiles()) {
+        navigator.share({ files: [file], title: 'MMPI cevaplarım', text: 'Karekodu okutunca ya da linki açınca cevaplarım salt okunur görünür: ' + shareLink() }).catch(function () {});
+        return;
+      }
+      var url = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = url; a.download = 'MMPI-karekod.png'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+      toast('Karekod indirildi. Görseli psikoloğuna gönderebilirsin.');
+    });
+  }
+  function renderQr() {
+    if (!$('dlg-transfer').open) return;
+    try {
+      if (!window.qrcode) return;
+      $('tr-qr-img').innerHTML = makeQr(transferLink()).createSvgTag(4, 0);
+      $('tr-qr').hidden = false;
+    } catch (e) { $('tr-qr').hidden = true; }
+  }
+  function openTransfer() {
+    var c = counts(answers), hasInfo = INFO_KEYS.some(function (k) { return info[k]; });
+    var sum = $('tr-sum'); sum.textContent = c.done + ' / ' + N + ' cevap ';
+    var sub = document.createElement('span'); sub.textContent = hasInfo ? 've kişisel bilgilerin taşınacak' : 'taşınacak'; sum.appendChild(sub);
+    $('tr-qr').hidden = true;
+    openDialog($('dlg-transfer'));
+    $('tr-close').blur();
+    loadQr(renderQr);
+  }
+
+  var pendingImport = null;
+  function clearHash() { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
+  function startImport(text, errEl) {
+    var d = parseShared(text);
+    if (!d) { if (errEl) errEl.textContent = 'Kod geçersiz. "M1." ile başlayan kodun ya da linkin tamamını yapıştır.'; return false; }
+    if (errEl) errEl.textContent = '';
+    var mine = counts(answers), theirs = counts(d.answers);
+    if (mine.done && enc(d.answers) !== enc(answers)) {
+      pendingImport = d;
+      $('dlg-import-p').textContent = 'Bu cihazda zaten ' + mine.done + ' cevap var. Aktarırsan bunların yerine linkteki ' + theirs.done + ' cevap kaydedilir ve bu cihazdaki cevaplar silinir.';
+      openDialog($('dlg-import'));
+    } else doImport(d);
+    return true;
+  }
+  function doImport(d) {
+    pendingImport = null; viewer = null;
+    answers = d.answers;
+    INFO_KEYS.forEach(function (k) { if (d.info[k]) info[k] = d.info[k]; });
+    pos = firstBlank(answers) || N;
+    save(); lsSet(ONB_KEY, '1'); clearHash(); $('f-open').value = '';
+    setView('home');
+    toast(counts(answers).done + ' cevap bu cihaza aktarıldı. Kaldığın yerden devam edebilirsin.');
+  }
+  function cancelImport() { pendingImport = null; clearHash(); if (view !== 'home') setView('home'); }
+
+  /* ---------- PDF ---------- */
+  function fmtDate(v) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ''); return m ? m[3] + '.' + m[2] + '.' + m[1] : (v || ''); }
+  function downloadPdf() {
+    var lib = window.jspdf && window.jspdf.jsPDF;
+    if (!lib) { toast('PDF aracı yüklenemedi. İnternet bağlantını kontrol edip sayfayı yenile.', 'info'); return; }
+    var data = viewer || { answers: answers, info: info };
+    try {
+      var inf = { isim: data.info.isim, yas: data.info.yas, cins: data.info.cins, dogum: fmtDate(data.info.dogum), test: fmtDate(data.info.test) };
+      var buf = buildMmpiPdf(lib, { answers: data.answers, info: inf, fonts: MMPI_FONTS, code: 'M1.' + encodeAnswers(data.answers) });
+      var base = String(data.info.isim || '').trim().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '');
+      var url = URL.createObjectURL(new Blob([buf], { type: 'application/pdf' }));
+      var a = document.createElement('a');
+      a.href = url; a.download = 'MMPI-cevap-anahtari' + (base ? '-' + base : '') + '.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+      var blank = counts(data.answers).blank;
+      toast('PDF indirildi.' + (blank ? ' ' + blank + ' soru boş.' : ''));
+    } catch (e) { toast('PDF oluşturulamadı. Tekrar dene.', 'info'); }
+  }
+
+  /* ---------- salt okunur açma ---------- */
+  function openShared(text, errEl) {
+    var d = parseShared(text);
+    if (!d) { if (errEl) errEl.textContent = 'Kod geçersiz. "M1." ile başlayan kodun ya da linkin tamamını yapıştır.'; return false; }
+    if (errEl) errEl.textContent = '';
+    viewer = d; resFilter = ''; resQuery = ''; syncResControls(); setView('result'); return true;
+  }
+  function exitViewer() {
+    viewer = null;
+    clearHash();
+    setView('home');
+  }
+  function checkHash() {
+    var h = location.hash || '';
+    var bad = 'Linkteki kod eksik ya da bozuk. Kodun tamamını buraya yapıştır.';
+    if (h.indexOf('#k=') === 0 && !openShared(h.slice(3))) { clearHash(); setView('home'); openCode('view', '', bad); }
+    if (h.indexOf('#devam=') === 0 && !startImport(h.slice(7))) { clearHash(); setView('home'); openCode('import', '', bad); }
+  }
+  function syncResControls() {
+    $$('#res-tabs .tab').forEach(function (t) { t.setAttribute('aria-selected', t.dataset.f === resFilter); });
+    $('a-search').value = resQuery;
+  }
+
+  /* ---------- dialog ---------- */
+  function openDialog(d) { clearTimeout(advTimer); closeMenu(); if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+  function closeDialog(d) { if (d.close) d.close(); else d.removeAttribute('open'); }
+  $$('dialog').forEach(function (d) {     // arka plana tıklayınca kapat
+    d.addEventListener('click', function (ev) { if (ev.target === d) { closeDialog(d); d.dispatchEvent(new Event('cancel')); } });
+  });
+
+  /* ---------- tema ---------- */
+  var theme = lsGet('mmpi-theme'); if (theme !== 'light' && theme !== 'dark') theme = 'auto';
+  var mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
+  function isDark() { return theme === 'dark' || (theme === 'auto' && mq && mq.matches); }
+  function applyTheme() {
+    var root = document.documentElement;
+    if (theme === 'auto') delete root.dataset.theme; else root.dataset.theme = theme;
+    $('ic-light').hidden = isDark(); $('ic-dark').hidden = !isDark();
+    $$('#theme-menu [data-theme]').forEach(function (b) { b.setAttribute('aria-checked', b.dataset.theme === theme); });
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark() ? '#09090b' : '#ffffff');
+  }
+  function closeMenu() { $('theme-menu').hidden = true; $('theme-btn').setAttribute('aria-expanded', 'false'); }
+  applyTheme();
+  if (mq && mq.addEventListener) mq.addEventListener('change', applyTheme);
+  $('theme-btn').addEventListener('click', function (ev) {
+    ev.stopPropagation();
+    var open = $('theme-menu').hidden;
+    $('theme-menu').hidden = !open; $('theme-btn').setAttribute('aria-expanded', open);
+    if (open) { var cur = $('theme-menu').querySelector('[aria-checked="true"]'); (cur || $('theme-menu').firstElementChild).focus(); }
+  });
+  $('theme-menu').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-theme]'); if (!b) return;
+    theme = b.dataset.theme;
+    if (theme === 'auto') lsDel('mmpi-theme'); else lsSet('mmpi-theme', theme);
+    applyTheme(); closeMenu(); $('theme-btn').focus();
+  });
+  $('theme-menu').addEventListener('keydown', function (ev) {
+    var items = $$('#theme-menu [data-theme]'), i = items.indexOf(document.activeElement);
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); items[(i + 1) % items.length].focus(); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+    else if (ev.key === 'Escape') { closeMenu(); $('theme-btn').focus(); }
+  });
+  document.addEventListener('click', function (ev) { if (!ev.target.closest('.menu-wrap')) closeMenu(); });
+
+  /* ---------- onboarding ---------- */
+  var onbI = 0, ONB_N = $$('.onb-slide').length;
+  function renderOnb() {
+    $$('.onb-slide').forEach(function (s) { s.hidden = +s.dataset.i !== onbI; });
+    $$('#onb-dots i').forEach(function (d, i) { d.classList.toggle('on', i === onbI); });
+    $('onb-prev').hidden = onbI === 0;
+    $('onb-skip').hidden = onbI === ONB_N - 1;
+    $('onb-next').textContent = onbI === ONB_N - 1 ? 'Başlayalım' : 'İleri';
+  }
+  function showOnb() { onbI = 0; renderOnb(); openDialog($('onb')); $('onb-next').focus(); }
+  function finishOnb() { lsSet(ONB_KEY, '1'); closeDialog($('onb')); }
+  $('onb-next').addEventListener('click', function () { if (onbI < ONB_N - 1) { onbI++; renderOnb(); $('onb-next').focus(); } else finishOnb(); });
+  $('onb-prev').addEventListener('click', function () { if (onbI > 0) { onbI--; renderOnb(); } });
+  $('onb-skip').addEventListener('click', finishOnb);
+  $('onb').addEventListener('cancel', function () { lsSet(ONB_KEY, '1'); });   // Esc ya da dışarı tıklayınca da bir daha gösterme
+  $('onb').addEventListener('keydown', function (ev) {
+    if (ev.key === 'ArrowRight' && onbI < ONB_N - 1) { onbI++; renderOnb(); }
+    else if (ev.key === 'ArrowLeft' && onbI > 0) { onbI--; renderOnb(); }
+  });
+
+  /* ---------- olaylar ---------- */
+  $('brand').addEventListener('click', goHome);
+  $('hdr-home').addEventListener('click', goHome);
+  $('hdr-map').addEventListener('click', function () { setView('map'); });
+  $('hdr-help').addEventListener('click', showOnb);
+  $('dlg-home-no').addEventListener('click', function () { closeDialog($('dlg-home')); });
+  $('dlg-home-yes').addEventListener('click', function () { closeDialog($('dlg-home')); save(); setView('home'); });
+
+  function beginTest() {
+    var c = counts(answers);
+    if (!info.test) { info.test = new Date().toISOString().slice(0, 10); }
+    pos = c.done === 0 ? 1 : (firstBlank(answers, pos) || pos);
+    save(); setView('step');
+  }
+  // İlk başlangıçta kişisel bilgileri sor; hiçbiri zorunlu değil, "Şimdilik geç" de testi başlatır.
+  $('start').addEventListener('click', function () {
+    if (counts(answers).done) { beginTest(); return; }
+    INFO_KEYS.forEach(function (k) { $('d-' + k).value = info[k] || ''; });
+    if (!$('d-test').value) $('d-test').value = new Date().toISOString().slice(0, 10);
+    openDialog($('dlg-info'));
+    $('d-isim').focus();
+  });
+  $('info-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    INFO_KEYS.forEach(function (k) { var v = $('d-' + k).value.trim(); if (v) info[k] = v; else delete info[k]; });
+    closeDialog($('dlg-info')); beginTest();
+  });
+  $('info-skip').addEventListener('click', function () { closeDialog($('dlg-info')); beginTest(); });
+
+  /* ---------- bitiş ---------- */
+  function finishTest() {
+    save();
+    if ((info.isim || '').trim()) { setView('done'); return; }
+    $('n-isim').value = '';
+    openDialog($('dlg-name'));
+    $('n-isim').focus();
+  }
+  $('name-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var v = $('n-isim').value.trim(); if (v) { info.isim = v; save(); }
+    closeDialog($('dlg-name')); setView('done');
+  });
+  $('name-skip').addEventListener('click', function () { closeDialog($('dlg-name')); setView('done'); });
+  $('dlg-name').addEventListener('cancel', function () { setTimeout(function () { setView('done'); }, 0); });
+  function renderDone() {
+    var c = counts(answers), first = (info.isim || '').trim().split(/\s+/)[0];
+    $('done-h').textContent = 'Tebrikler' + (first ? ', ' + first : '') + '!';
+    $('done-p').textContent = c.blank
+      ? 'Son soruya ulaştın. ' + N + ' sorudan ' + c.done + ' tanesini cevapladın.'
+      : N + ' sorunun hepsini cevapladın. Uzun bir testti, emeğine sağlık.';
+    $('dn-d').textContent = c.d; $('dn-y').textContent = c.y; $('dn-b').textContent = c.blank;
+    $('done-blank').hidden = !c.blank;
+    $('done-blank-n').textContent = c.blank + ' soru';
+  }
+  $('done-result').addEventListener('click', function () { setView('result'); });
+  $('done-pdf').addEventListener('click', downloadPdf);
+  $('done-blank-go').addEventListener('click', function () { pos = firstBlank(answers) || pos; save(); setView('step'); });
+  $('home-result').addEventListener('click', function () { setView('result'); });
+
+  $('b-d').addEventListener('click', function () { answer('D'); });
+  $('b-y').addEventListener('click', function () { answer('Y'); });
+  $('b-next').addEventListener('click', next);
+  $('b-prev').addEventListener('click', back);
+  $('b-clear').addEventListener('click', function () { answers[pos] = ''; save(); renderStep(); });
+  $('set-auto').addEventListener('click', function () {
+    prefs.auto = !prefs.auto; lsSet(PREF_KEY, JSON.stringify(prefs)); $('set-auto').setAttribute('aria-checked', prefs.auto);
+  });
+  $('auto-sw').addEventListener('click', function () {
+    prefs.auto = !prefs.auto; lsSet(PREF_KEY, JSON.stringify(prefs)); renderStep();
+  });
+
+  $('map').addEventListener('click', function (ev) {
+    var b = ev.target.closest('.cell'); if (!b) return;
+    pos = +b.dataset.n; save(); setView('step');
+  });
+  $('map-tabs').addEventListener('click', function (ev) {
+    var t = ev.target.closest('.tab'); if (!t) return;
+    mapFilter = t.dataset.mf;
+    $$('#map-tabs .tab').forEach(function (o) { o.setAttribute('aria-selected', o === t); });
+    $('map').className = 'map' + (mapFilter ? ' map-filter-' + mapFilter : '');
+  });
+  $('jump-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var n = parseInt($('jump-input').value, 10);
+    if (!(n >= 1 && n <= N)) { toast('1 ile ' + N + ' arasında bir numara gir.', 'info'); return; }
+    pos = n; $('jump-input').value = ''; save(); setView('step');
+  });
+  $('map-first').addEventListener('click', function () { pos = firstBlank(answers) || pos; save(); setView('step'); });
+  $('map-result').addEventListener('click', function () { setView('result'); });
+  $('map-back').addEventListener('click', function () { setView('step'); });
+
+  $('res-edit').addEventListener('click', function () { pos = firstBlank(answers) || pos; save(); setView('step'); });
+  $('blank-go').addEventListener('click', function () { pos = firstBlank(answers) || pos; save(); setView('step'); });
+  $('viewer-exit').addEventListener('click', exitViewer);
+  $('pdf-btn').addEventListener('click', downloadPdf);
+  function openRow(r) { if (viewer || !r) return; pos = +r.dataset.n; save(); setView('step'); }
+  $('alist').addEventListener('click', function (ev) { openRow(ev.target.closest('.arow')); });
+  $('alist').addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openRow(ev.target.closest('.arow')); } });
+  $('res-tabs').addEventListener('click', function (ev) {
+    var t = ev.target.closest('.tab'); if (!t) return;
+    resFilter = t.dataset.f; syncResControls(); applyResFilter();
+  });
+  $('a-search').addEventListener('input', function () { resQuery = $('a-search').value; applyResFilter(); });
+
+  $('share-info').addEventListener('click', function () {
+    var on = !shareInfoOn();
+    $('share-info').setAttribute('aria-checked', on); refreshShare();
+    if (on && !INFO_KEYS.some(function (k) { return info[k]; })) toast('Kişisel bilgi girilmemiş. Ana ekrandaki "Kişisel bilgiler" bölümünden ekleyebilirsin.', 'info');
+  });
+  $('copy-code').addEventListener('click', function () { copyText(shareCode(), 'Kod kopyalandı.'); });
+  $('qr-share').addEventListener('click', shareQr);
+  $('qr-share-lbl').textContent = canShareFiles() ? 'Karekodu paylaş' : 'Karekodu indir';
+  $('copy-link').addEventListener('click', function () { copyText(shareLink(), 'Link kopyalandı.'); });
+
+  /* ---------- kod ile aç ---------- */
+  var codeMode = 'import';
+  function setCodeMode(m) {
+    codeMode = m;
+    $$('#dlg-code .mode-opt').forEach(function (o) { o.setAttribute('aria-checked', o.dataset.mode === m); });
+    $('code-go').textContent = m === 'view' ? 'Cevapları görüntüle' : 'Bu cihaza aktar';
+  }
+  // Yapıştırılan metni anında denetle; linkin türü (#k= / #devam=) seçimi kendiliğinden ayarlar.
+  function checkCode() {
+    var v = $('f-open').value, d = v.trim() ? parseShared(v) : null;
+    if (/#k=/.test(v)) setCodeMode('view'); else if (/#devam=/.test(v)) setCodeMode('import');
+    if (d) $('open-err').textContent = '';
+    $('code-ok').hidden = !d;
+    if (d) $('code-ok').textContent = 'Geçerli kod: ' + N + ' sorudan ' + counts(d.answers).done + ' tanesi cevaplanmış.';
+  }
+  function openCode(mode, text, err) {
+    setCodeMode(mode || 'import');
+    $('f-open').value = text || '';
+    $('open-err').textContent = err || '';
+    $('code-paste').hidden = !(navigator.clipboard && navigator.clipboard.readText);
+    openDialog($('dlg-code'));
+    checkCode();
+    $('f-open').focus();
+  }
+  $('code-open').addEventListener('click', function () { openCode('import'); });
+  $$('#dlg-code .mode-opt').forEach(function (o) { o.addEventListener('click', function () { setCodeMode(o.dataset.mode); }); });
+  $('f-open').addEventListener('input', checkCode);
+  $('code-paste').addEventListener('click', function () {
+    navigator.clipboard.readText().then(function (t) { $('f-open').value = t; checkCode(); },
+      function () { $('open-err').textContent = 'Panoya erişilemedi. Metni kutuya elle yapıştır.'; $('f-open').focus(); });
+  });
+  $('code-cancel').addEventListener('click', function () { closeDialog($('dlg-code')); });
+  $('code-go').addEventListener('click', function () {
+    var v = $('f-open').value;
+    if (!parseShared(v)) { $('open-err').textContent = 'Kod geçersiz. "M1." ile başlayan kodun ya da linkin tamamını yapıştır.'; $('f-open').focus(); return; }
+    closeDialog($('dlg-code'));
+    if (codeMode === 'view') openShared(v); else startImport(v);
+  });
+  $('home-transfer').addEventListener('click', openTransfer);
+  $('tr-close').addEventListener('click', function () { closeDialog($('dlg-transfer')); });
+  $('tr-copy-link').addEventListener('click', function () { copyText(transferLink(), 'Link kopyalandı. Şimdi diğer cihaza gönder.', $('tr-copy-link')); });
+  $('tr-copy-code').addEventListener('click', function () { copyText(transferCode(), 'Kod kopyalandı.', $('tr-copy-code')); });
+  $('dlg-import-yes').addEventListener('click', function () { closeDialog($('dlg-import')); if (pendingImport) doImport(pendingImport); });
+  $('dlg-import-no').addEventListener('click', function () { closeDialog($('dlg-import')); cancelImport(); });
+  $('dlg-import').addEventListener('cancel', cancelImport);
+  INFO_KEYS.forEach(function (k) {
+    var el = $('f-' + k);
+    function upd() { info[k] = el.value; save(); }
+    el.addEventListener('input', upd); el.addEventListener('change', upd);
+  });
+  $('f-import').addEventListener('change', function (ev) {
+    var f = ev.target.files && ev.target.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      var p = parseMd(rd.result);
+      if (!p.count) { $('import-err').textContent = 'Dosyada "1. Soru metni" biçiminde satır bulunamadı.'; return; }
+      lsSet(MDKEY, String(rd.result)); questions = p.map; haveQ = true; $('import-err').textContent = '';
+      toast(p.count + ' soru yüklendi.'); renderHome();
+    };
+    rd.readAsText(f, 'utf-8');
+  });
+
+  $('reset').addEventListener('click', function () { openDialog($('dlg-reset')); });
+  $('dlg-reset-no').addEventListener('click', function () { closeDialog($('dlg-reset')); });
+  $('dlg-reset-yes').addEventListener('click', function () {
+    closeDialog($('dlg-reset'));
+    answers = new Array(N + 1).fill(''); info = {}; pos = 1; lsDel(KEY);
+    renderHome(); toast('Cevaplar silindi.');
+  });
+
+  document.addEventListener('keydown', function (ev) {
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (document.querySelector('dialog[open]') || !$('theme-menu').hidden) return;
+    var t = ev.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
+    if (view !== 'step') return;
+    var k = ev.key;
+    if (k === 'd' || k === 'D') { ev.preventDefault(); answer('D'); }
+    else if (k === 'y' || k === 'Y') { ev.preventDefault(); answer('Y'); }
+    else if (k === 'ArrowLeft') { ev.preventDefault(); back(); }
+    else if (k === 'ArrowRight') { ev.preventDefault(); next(); }
+  });
+  window.addEventListener('hashchange', checkHash);
+
+  /* ---------- başlat ---------- */
+  setView('home');
+  if (!lsGet(ONB_KEY) && !/^#(k|devam)=/.test(location.hash || '')) showOnb();   // paylaşılan ya da aktarma linkiyle gelene gösterme
+  loadQuestions().then(function () { if (view === 'home') renderHome(); if (view === 'step') renderStep(); if (view === 'result') renderResult(); checkHash(); });
+})();
+</script>
+</body>
+</html>
