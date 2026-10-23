@@ -1,0 +1,17 @@
+# Arama motorları ve yapay zekâ araçları siteyi tarayabilir.
+# Paylaşılan cevaplar adresin # kısmında taşındığı için taranmaz ve indekslenmez.
+User-agent: *
+Allow: /
+
+# Yapay zekâ arama ve asistan tarayıcıları (açıkça izinli)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://mmpi.afatihyavasi.com/sitemap.xml

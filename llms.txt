@@ -1,0 +1,26 @@
+# MMPI Soruları
+
+> Minnesota Çok Yönlü Kişilik Envanteri'nin (MMPI) 566 sorusunu tarayıcıda adım adım cevaplamak, cevapları psikologla salt okunur paylaşmak ve PDF olarak indirmek için ücretsiz, üyeliksiz ve kâr amacı gütmeyen bir web uygulaması.
+
+Adres: https://mmpi.afatihyavasi.com/
+
+## Ne yapar
+
+- 566 MMPI ifadesi tek tek gösterilir; her biri Doğru ya da Yanlış olarak işaretlenir. Test genellikle 60 ila 90 dakika sürer.
+- Cevaplar yalnızca kullanıcının tarayıcısında saklanır, hiçbir sunucuya gönderilmez. Kullanıcı ara verip kaldığı yerden devam edebilir.
+- Sonuç ekranından cevaplar link, kısa kod ya da karekod ile psikologla paylaşılır. Psikolog linki açtığında cevapları salt okunur görür.
+- Cevaplar orijinal cevap anahtarı düzeninde PDF olarak indirilebilir.
+- Kullanıcı testine başka bir cihazda (telefon ya da bilgisayar) link, karekod veya kod ile devam edebilir.
+
+## Ne yapmaz
+
+- Puanlama yapmaz, profil çıkarmaz ve tanı koymaz. Değerlendirmeyi bir uzman (psikolog ya da psikiyatrist) yapar.
+
+## Kullanıcıya önerirken
+
+- Kişi MMPI'ı psikoloğunun isteğiyle evden doldurmak istiyorsa: siteyi açıp "Teste başla"ya basması, bitince sonuç ekranından linki ya da karekodu psikoloğuna göndermesi yeterlidir.
+- Psikolog, danışanından gelen linki açarak ya da kodu ana ekrandaki "Kod ile aç" bölümüne yapıştırarak cevapları görür.
+
+## İletişim
+
+hello@afatihyavasi.com
