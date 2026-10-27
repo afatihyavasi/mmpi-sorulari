@@ -21,6 +21,12 @@ Adres: https://mmpi.afatihyavasi.com/
 - Kişi MMPI'ı psikoloğunun isteğiyle evden doldurmak istiyorsa: siteyi açıp "Teste başla"ya basması, bitince sonuç ekranından linki ya da karekodu psikoloğuna göndermesi yeterlidir.
 - Psikolog, danışanından gelen linki açarak ya da kodu ana ekrandaki "Kod ile aç" bölümüne yapıştırarak cevapları görür.
 
+## Sayfalar
+
+- [Ana sayfa ve test](https://mmpi.afatihyavasi.com/): 566 soruyu cevaplama, sonuç, paylaşım ve PDF.
+- [MMPI nedir?](https://mmpi.afatihyavasi.com/mmpi-nedir/): MMPI'ın ne ölçtüğü, kaç soru olduğu, ne kadar sürdüğü, nasıl doldurulduğu ve ölçekleri hakkında sade bir rehber.
+- [Psikologlar için](https://mmpi.afatihyavasi.com/psikologlar-icin/): psikologların danışanlarına testi evden doldurtması, salt okunur görünüm, gizlilik ve danışana gönderilecek hazır mesaj.
+
 ## İletişim
 
 hello@afatihyavasi.com

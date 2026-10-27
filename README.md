@@ -26,6 +26,8 @@ Uygulama tek bir `index.html` dosyasıdır; derleme ya da kurulum gerekmez.
 ## Arama motorları ve yapay zekâ araçları
 
 - `index.html`: başlık, açıklama, `canonical`, Open Graph ve Twitter etiketleri, yapılandırılmış veri (`WebSite`, `WebApplication`, `FAQPage`). Sık sorulan sorular ve tam soru listesi sayfa metni olarak yer alır.
+- `mmpi-nedir/`: MMPI'ın ne olduğu, kaç soru olduğu, ne kadar sürdüğü ve nasıl doldurulduğu hakkında rehber.
+- `psikologlar-icin/`: psikologlar için aracın tanıtımı ve danışana gönderilecek hazır mesaj. Bu iki sayfa `assets/content.css` stilini paylaşır.
 - `og-image.png` (1200x630): link paylaşıldığında görünen önizleme görseli.
 - `favicon.svg`, `apple-touch-icon.png`: tarayıcı ve ana ekran simgeleri.
 - `robots.txt`: tüm tarayıcılara, yapay zekâ tarayıcıları dahil, açıkça izin verir ve site haritasını gösterir.

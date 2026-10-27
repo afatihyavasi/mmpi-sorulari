@@ -214,6 +214,11 @@ main.wrap { padding-top: 28px; padding-bottom: calc(48px + env(safe-area-inset-b
 .foot-left { display: grid; gap: 4px; max-width: 34em; }
 .foot-made { color: var(--foreground); font-weight: 500; }
 .foot-made [role="img"] { margin: 0 3px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px; }
+.foot-links a { color: var(--muted-foreground); text-decoration: none; }
+.foot-links a:hover { color: var(--foreground); }
+.seo-more { font-size: 14px; color: var(--muted-foreground); margin-top: 12px; }
+.seo-more a { color: var(--foreground); text-underline-offset: 3px; }
 .foot-mail { display: inline-flex; align-items: center; gap: 8px; flex: none; color: var(--foreground); text-decoration: none; padding: 6px 10px; margin: -6px -10px; border-radius: 8px; }
 .foot-mail:hover { background: var(--muted); }
 @media (max-width: 640px) { .foot-in { flex-direction: column; } }
@@ -660,6 +665,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .6); }
         <div class="acc-body"><p>Hayır. Araç yalnızca cevaplarını kaydeder ve paylaşmanı sağlar; puanlama ve değerlendirmeyi bir uzman yapar.</p></div>
       </details>
       </div>
+      <p class="seo-more">Daha fazlası için <a href="/mmpi-nedir/">MMPI nedir, nasıl doldurulur rehberi</a>. Psikologsan: <a href="/psikologlar-icin/">danışanlarına MMPI'ı evden doldurt</a>.</p>
     </section>
 
     <section class="seo-sec" id="soru-listesi" aria-labelledby="list-h">
@@ -1423,6 +1429,7 @@ dialog::backdrop { background: rgba(0, 0, 0, .6); }
     <div class="foot-left">
       <p class="foot-made">Kâr amacı gütmeden, <span aria-label="sevgiyle" role="img">❤️</span> ile geliştirildi.</p>
       <p>Bu araç tanı koymaz, değerlendirmeyi bir uzman yapar. Cevapların sunucuya gönderilmez, yalnızca bu cihazda saklanır.</p>
+      <nav class="foot-links" aria-label="Alt bağlantılar"><a href="/mmpi-nedir/">MMPI nedir?</a><a href="/psikologlar-icin/">Psikologlar için</a></nav>
     </div>
     <a class="foot-mail" href="mailto:hello@afatihyavasi.com">
       <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@afatihyavasi.com
