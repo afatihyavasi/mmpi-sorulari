@@ -33,7 +33,7 @@
 ]}
 ]}
 </script>
-<script>try { var t = localStorage.getItem('mmpi-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<script>var t = 'light'; try { t = localStorage.getItem('mmpi-theme') || 'light'; } catch (e) {} if (t !== 'auto') document.documentElement.dataset.theme = t === 'dark' ? 'dark' : 'light';</script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   window.va('beforeSend', function (event) { return Object.assign({}, event, { url: String(event.url || '').split('#')[0] }); });
